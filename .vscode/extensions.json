@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    "anthropic.claude-code",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "oxc.oxc-vscode",
+    "firsttris.vscode-jest-runner",
+    "ms-playwright.playwright",
+    "eamodio.gitlens",
+    "github.vscode-github-actions",
+    "formulahendry.code-runner",
+    "pkief.material-icon-theme",
+    "meezilla.json"
+  ]
+}

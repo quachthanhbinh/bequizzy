@@ -1,0 +1,58 @@
+{
+  "version": "1.1",
+  "project": {
+    "name": "BeQuizzy",
+    "description": "<TODO: add project description>",
+    "context_files": [
+      "CLAUDE.md",
+      "docs/ARCHITECTURE.md",
+      "docs/DATABASE_SCHEMA.md"
+    ]
+  },
+  "agents": {
+    "default": null,
+    "orchestrator": "planner",
+    "available": [
+      "planner",
+      "cpo-advisor",
+      "cto-advisor",
+      "tdd-agent",
+      "explore",
+      "frontend-developer",
+      "backend-developer",
+      "database-architect",
+      "devops-engineer",
+      "security-auditor",
+      "code-reviewer"
+    ]
+  },
+  "skills": [
+    "spec-driven-development",
+    "tdd-workflow",
+    "verification-loop",
+    "writing-plans",
+    "systematic-debugging",
+    "edd-workflow"
+  ],
+  "commands": [
+    "new-feature",
+    "tdd",
+    "fix-bug",
+    "code-review",
+    "security-audit",
+    "compact-spec",
+    "insights",
+    "propose-skill",
+    "generate-migration",
+    "check-workspace-scope",
+    "create-service"
+  ],
+  "hooks": {
+    "pre_tool_call": [
+      ".claude/hooks/pre-tool-call.md"
+    ],
+    "post_tool_call": [
+      ".claude/hooks/post-tool-call.md"
+    ]
+  }
+}
