@@ -1,0 +1,40 @@
+# Local dev infrastructure — machine-specific, not committed
+infra/local/
+
+# Environment files
+.env
+.env.local
+*.env.local
+
+# GCP service account keys — never commit
+gcpkey.json
+*-service-account.json
+*-gcp-key.json
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+.mypy_cache/
+.pytest_cache/
+*.egg-info/
+
+# Node
+node_modules/
+.next/
+out/
+build/
+
+# OS
+.DS_Store
+Thumbs.db
+
+infra/signoz/data/
+
+# GCP service account keys
+github-actions-sa-key.json
+gcpkey.json
+*-sa-key.json
+
+# GitNexus local database
+.gitnexus/

@@ -4,7 +4,7 @@ agent: planner
 argument-hint: "Describe the feature you want to build"
 ---
 
-Start the Spec-Driven Development workflow for a new BeQuizzy feature.
+Start the Spec-Driven Development workflow for a new RevLooper feature.
 
 **Feature description:** $ARGUMENTS
 
@@ -48,6 +48,7 @@ Look at `docs/specs/01_AUTH_WORKSPACE/` (and the `_TEMPLATE/` folder if present)
 7. **SELF-REVIEW** — Check for placeholders, contradictions, missing non-negotiables; verify cross-file consistency
 8. **REGISTER** — Add the new folder to `docs/specs/README.md` (Ordered Specs list and the relevant Parallel Track)
 9. **HANDOFF** — Hand off to TDD Agent for implementation, pointing at `TASKS.md`
+10. **QA** — After TDD Agent completes, invoke the `qa-engineer` agent to write and run Playwright E2E tests that cover every user-facing acceptance criterion in `TESTS.md`
 
 Use the `spec-driven-development` skill for the complete workflow.
 

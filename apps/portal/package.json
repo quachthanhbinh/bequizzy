@@ -1,0 +1,43 @@
+{
+  "name": "portal",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "check": "tsc --noEmit && next lint",
+    "pages:build": "next build && npx @opennextjs/cloudflare build",
+    "preview": "npx wrangler dev",
+    "test:e2e": "playwright test",
+    "test:e2e:ui": "playwright test --ui"
+  },
+  "dependencies": {
+    "@sentry/nextjs": "^10.52.0",
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.105.4",
+    "@tanstack/react-query": "^5.100.9",
+    "date-fns": "^4.1.0",
+    "driver.js": "^1.4.0",
+    "next": "^15.5.2",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-markdown": "^10.1.0",
+    "remark-gfm": "^4.0.1"
+  },
+  "devDependencies": {
+    "@opennextjs/cloudflare": "^1.19.6",
+    "@playwright/test": "^1.59.1",
+    "@tailwindcss/postcss": "^4.2.4",
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "eslint": "^8",
+    "eslint-config-next": "14.2.35",
+    "postcss": "^8",
+    "tailwindcss": "^4.2.4",
+    "typescript": "^5",
+    "wrangler": "^4.87.0"
+  }
+}

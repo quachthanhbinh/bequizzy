@@ -1,8 +1,8 @@
 {
   "version": "1.1",
   "project": {
-    "name": "BeQuizzy",
-    "description": "<TODO: add project description>",
+    "name": "RevLooper",
+    "description": "AI Sales Representative SaaS — automated outreach for B2B teams in Southeast Asia",
     "context_files": [
       "CLAUDE.md",
       "docs/ARCHITECTURE.md",

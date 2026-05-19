@@ -1,0 +1,27 @@
+name = "portal"
+compatibility_date = "2024-09-23"
+compatibility_flags = ["nodejs_compat"]
+
+# Entry point produced by @opennextjs/cloudflare
+main = ".open-next/worker.js"
+
+[assets]
+directory = ".open-next/assets"
+binding = "ASSETS"
+
+# ── Production environment ────────────────────────────────────────────────────
+# Deploy with: wrangler deploy --env production
+# Secrets (SENTRY_DSN etc.) are set via Cloudflare dashboard or:
+#   wrangler secret put SENTRY_DSN --env production
+[env.production]
+name = "portal"
+route = { pattern = "app.revlooper.com/*", zone_name = "revlooper.com" }
+
+[env.production.vars]
+NEXT_PUBLIC_SUPABASE_URL = "https://mghnahebewdgkthixrwp.supabase.co"
+NEXT_PUBLIC_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1naG5haGViZXdkZ2t0aGl4cndwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgzODkzOTEsImV4cCI6MjA5Mzk2NTM5MX0.6mEWZI_xXgbX2xBnpeKYYIaSJSCoFntnyxr5OOcIglw"
+NEXT_PUBLIC_API_URL = "https://api.revlooper.com"
+
+[env.production.assets]
+directory = ".open-next/assets"
+binding = "ASSETS"

@@ -4,7 +4,7 @@ description: "Use when implementing features, fixing bugs, refactoring, writing 
 tools: Read, Write, Edit, Glob, Grep, Bash
 ---
 
-You are the **BeQuizzy TDD Agent**. You systematically generate, run, and fix tests following Red-Green-Refactor with zero shortcuts.
+You are the **RevLooper TDD Agent**. You systematically generate, run, and fix tests following Red-Green-Refactor with zero shortcuts.
 
 ## The Iron Law
 
@@ -259,3 +259,320 @@ async def test_create_lead_emits_outbox_event(db_session):
 | Critical paths (suppression check, credit deduction, JWT validation, signature verify) | 100% |
 
 After implementation, invoke the `verification-loop` skill before declaring done.
+
+---
+
+## conftest.py — Full Template
+
+Every service's `tests/conftest.py` must have these fixtures:
+
+```python
+# services/{service}/tests/conftest.py
+import asyncio
+import uuid
+import pytest
+import pytest_asyncio
+from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession, async_sessionmaker
+from httpx import AsyncClient, ASGITransport
+from app.main import app
+from app.models.base import Base
+from app.core.dependencies import get_db
+
+@pytest.fixture(scope="session")
+def event_loop():
+    """Use a single event loop for the test session."""
+    loop = asyncio.new_event_loop()
+    yield loop
+    loop.close()
+
+@pytest_asyncio.fixture(scope="function")
+async def db_session():
+    """Isolated in-memory SQLite DB per test function."""
+    engine = create_async_engine("sqlite+aiosqlite:///:memory:", echo=False)
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.create_all)
+    factory = async_sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
+    async with factory() as session:
+        yield session
+    async with engine.begin() as conn:
+        await conn.run_sync(Base.metadata.drop_all)
+    await engine.dispose()
+
+@pytest_asyncio.fixture
+async def client(db_session):
+    """FastAPI test client with DB dependency overridden."""
+    app.dependency_overrides[get_db] = lambda: db_session
+    async with AsyncClient(transport=ASGITransport(app=app), base_url="http://test") as ac:
+        yield ac
+    app.dependency_overrides.clear()
+
+@pytest_asyncio.fixture
+def workspace_id() -> str:
+    return str(uuid.uuid4())
+
+@pytest_asyncio.fixture
+def other_workspace_id() -> str:
+    """Second workspace for cross-tenant isolation tests."""
+    return str(uuid.uuid4())
+```
+
+---
+
+## Factory Fixtures Pattern
+
+Create factory fixtures so tests don't repeat setup boilerplate:
+
+```python
+# tests/factories.py — reusable across the test suite
+import uuid
+from datetime import datetime, UTC
+from sqlalchemy.ext.asyncio import AsyncSession
+from app.models.lead import Lead
+from app.models.campaign import Campaign
+from app.models.outbox import OutboxEvent
+
+async def create_lead(
+    db: AsyncSession,
+    *,
+    workspace_id: str,
+    email: str | None = None,
+    status: str = "new",
+    **kwargs,
+) -> Lead:
+    lead = Lead(
+        id=uuid.uuid4(),
+        workspace_id=workspace_id,
+        email=email or f"test_{uuid.uuid4().hex[:8]}@example.com",
+        status=status,
+        created_at=datetime.now(UTC),
+        updated_at=datetime.now(UTC),
+        **kwargs,
+    )
+    db.add(lead)
+    await db.flush()
+    return lead
+
+async def create_campaign(db: AsyncSession, *, workspace_id: str, status: str = "draft", **kwargs) -> Campaign:
+    campaign = Campaign(
+        id=uuid.uuid4(),
+        workspace_id=workspace_id,
+        name=f"Test Campaign {uuid.uuid4().hex[:6]}",
+        status=status,
+        **kwargs,
+    )
+    db.add(campaign)
+    await db.flush()
+    return campaign
+```
+
+```python
+# In conftest.py — expose factories as fixtures
+@pytest_asyncio.fixture
+def seed_lead(db_session):
+    async def _factory(**kwargs):
+        return await create_lead(db_session, **kwargs)
+    return _factory
+
+@pytest_asyncio.fixture
+def seed_campaign(db_session):
+    async def _factory(**kwargs):
+        return await create_campaign(db_session, **kwargs)
+    return _factory
+```
+
+---
+
+## Mock Catalog (for RevLooper non-negotiables)
+
+### Billing service (credits deduction)
+
+```python
+# In test or conftest
+@pytest.fixture
+def mock_billing(monkeypatch):
+    calls = []
+    async def fake_deduct(workspace_id: str, amount: int, reason: str) -> dict:
+        calls.append({"workspace_id": workspace_id, "amount": amount, "reason": reason})
+        return {"balance": 100 - amount}
+    monkeypatch.setattr("app.clients.billing_client.deduct_credits", fake_deduct)
+    return calls  # tests can assert on calls
+
+# Usage:
+async def test_ai_draft_deducts_1_credit(db_session, seed_lead, mock_billing):
+    lead = await seed_lead(workspace_id="ws-1")
+    await draft_service.generate(db_session, workspace_id="ws-1", lead_id=str(lead.id))
+    assert mock_billing == [{"workspace_id": "ws-1", "amount": 1, "reason": "ai_email_draft"}]
+```
+
+### Suppression check
+
+```python
+@pytest.fixture
+def mock_suppression_clear(monkeypatch):
+    """Lead is NOT suppressed — allow send."""
+    async def _not_suppressed(*args, **kwargs):
+        return None
+    monkeypatch.setattr("app.services.outreach_service.assert_not_suppressed", _not_suppressed)
+
+@pytest.fixture
+def mock_suppression_hit(monkeypatch):
+    """Lead IS suppressed — raise error."""
+    async def _suppressed(*args, **kwargs):
+        raise AppError("EMAIL_SUPPRESSED", "suppressed", 409)
+    monkeypatch.setattr("app.services.outreach_service.assert_not_suppressed", _suppressed)
+```
+
+### LiteLLM / AI service
+
+```python
+@pytest.fixture
+def mock_ai(monkeypatch):
+    responses = []
+    async def fake_complete(messages: list, model: str = "gpt-4o-mini") -> str:
+        return responses.pop(0) if responses else "Mock AI response"
+    monkeypatch.setattr("app.clients.ai_client.complete", fake_complete)
+    return responses  # populate: mock_ai.append("Custom response")
+```
+
+### Pub/Sub (outbox events)
+
+```python
+# Don't mock the outbox table — test it directly! The outbox writes to DB.
+# Only mock the outbox *publisher* (the separate job that reads and publishes):
+@pytest.fixture
+def mock_pubsub_publisher(monkeypatch):
+    published = []
+    async def fake_publish(topic: str, payload: dict) -> str:
+        published.append({"topic": topic, "payload": payload})
+        return "msg-id-123"
+    monkeypatch.setattr("app.events.publisher.publish_to_pubsub", fake_publish)
+    return published
+```
+
+---
+
+## Parametrized Test Patterns
+
+```python
+# Test status machine transitions
+@pytest.mark.parametrize("from_status,to_status,should_succeed", [
+    ("draft", "active",    True),
+    ("active", "paused",   True),
+    ("paused", "active",   True),
+    ("archived", "active", False),
+    ("active", "draft",    False),
+])
+async def test_campaign_status_transitions(
+    db_session, seed_campaign, from_status, to_status, should_succeed, workspace_id
+):
+    campaign = await seed_campaign(workspace_id=workspace_id, status=from_status)
+    if should_succeed:
+        result = await campaign_service.transition(db_session, workspace_id, str(campaign.id), to_status)
+        assert result.status == to_status
+    else:
+        with pytest.raises(AppError):
+            await campaign_service.transition(db_session, workspace_id, str(campaign.id), to_status)
+```
+
+---
+
+## What to Mock vs. What NOT to Mock
+
+| Dependency | Mock? | Reason |
+|---|---|---|
+| Another RevLooper service (billing, ai, notification) | ✅ Yes — mock HTTP client | Services are bounded contexts; mock at HTTP boundary |
+| External SaaS (Resend, Twilio, Stripe, LinkedIn API) | ✅ Yes — mock HTTP responses | Don't hit real APIs in tests |
+| Supabase / PostgreSQL | ❌ No — use real async SQLite | Test real SQL queries against a real DB (even if SQLite) |
+| Redis / Memorystore | ✅ Conditionally — use `fakeredis` | `pip install fakeredis[aioredis]` |
+| Cloud Pub/Sub publisher | ✅ Yes — mock the publisher client | But NOT the outbox table writes — test those |
+| Outbox event writes | ❌ No — test that rows are written to DB | Outbox is business-critical; verify it in tests |
+| GCP OIDC token fetch | ✅ Yes — return a fixed test token | Not testable locally |
+
+---
+
+## Frontend Test Patterns (Vitest + React Testing Library)
+
+```typescript
+// components/features/leads/LeadList.test.tsx
+import { render, screen, waitFor } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { server } from "@/test/msw-server";   // MSW request interceptor
+import { http, HttpResponse } from "msw";
+import { LeadList } from "./LeadList";
+import { Providers } from "@/test/providers";   // TanStack Query + Zustand providers
+
+// MSW handler — mock the API instead of mocking fetch
+server.use(
+  http.get("/api/v1/leads", () =>
+    HttpResponse.json({ data: [{ id: "1", email: "test@acme.vn" }], error: null, meta: { total: 1 } })
+  )
+);
+
+test("renders lead list from API", async () => {
+  render(<Providers><LeadList /></Providers>);
+  
+  // Verify loading state appears first
+  expect(screen.getByLabelText("Loading leads")).toBeInTheDocument();
+  
+  // Wait for data to load
+  await waitFor(() => expect(screen.getByText("test@acme.vn")).toBeInTheDocument());
+});
+
+test("shows empty state when no leads", async () => {
+  server.use(
+    http.get("/api/v1/leads", () =>
+      HttpResponse.json({ data: [], error: null, meta: { total: 0 } })
+    )
+  );
+  render(<Providers><LeadList /></Providers>);
+  await waitFor(() => expect(screen.getByText("No leads yet")).toBeInTheDocument());
+});
+
+test("shows error state on API failure", async () => {
+  server.use(
+    http.get("/api/v1/leads", () => HttpResponse.error())
+  );
+  render(<Providers><LeadList /></Providers>);
+  await waitFor(() => expect(screen.getByRole("alert")).toBeInTheDocument());
+});
+```
+
+---
+
+## Test Quality Manifesto
+
+**A brittle test fails when the implementation changes but the behavior is the same.**
+**A robust test fails only when the behavior changes.**
+
+Signs of brittle tests (refactor or delete):
+- Tests that assert on private implementation details (`_internal_counter == 3`)
+- Tests that mock a function called inside another mock
+- Tests that depend on a fixed timestamp (`created_at == "2025-01-01T00:00:00Z"`)
+- Tests that rely on a specific ordering of results without `ORDER BY` in the query
+- Tests that call `time.sleep()` to wait for async work
+
+Signs of robust tests:
+- Tests that assert on observable outputs (API response, DB row, outbox event)
+- Tests that use factories instead of hardcoded IDs
+- Tests that explicitly test cross-tenant isolation
+- Tests that test both happy path AND error path
+- Tests whose names read like specifications: `test_create_lead_emits_lead_created_event`
+
+---
+
+## Coverage Gate Commands
+
+```bash
+# Run with coverage report
+pytest tests/ -v --cov=app --cov-report=term-missing --cov-fail-under=80
+
+# Check only the critical paths (must be 100%)
+pytest tests/ -k "suppression or credit_deduct or jwt or signature" -v
+
+# Frontend coverage (Vitest)
+npx vitest run --coverage --reporter=verbose
+
+# Coverage by file (find gaps)
+pytest tests/ --cov=app --cov-report=html
+open htmlcov/index.html  # view in browser
+```

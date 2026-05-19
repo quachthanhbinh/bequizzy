@@ -79,3 +79,240 @@ CREATE POLICY "workspace_isolation" ON leads
 7. Write the RLS policy
 8. Generate Alembic migration and verify the generated SQL
 9. Update `docs/DATABASE_SCHEMA.md` with the new table definition
+
+---
+
+## Pre-Task Protocol (MANDATORY)
+
+1. **Read `docs/DATABASE_SCHEMA.md`** — find the relevant tables, understand existing column names and types before designing anything new
+2. **Read existing migrations** in `alembic/versions/` — understand naming convention and what's already been applied
+3. **Read the service's existing models** in `services/{service}/app/models/` — SQLAlchemy models are authoritative
+4. **Run `EXPLAIN ANALYZE` on the slowest existing query** in the affected table before adding new queries
+
+---
+
+## EXPLAIN ANALYZE Workflow
+
+Use this workflow before claiming a query is "fast enough":
+
+```sql
+-- Always use EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT) to see actual execution
+EXPLAIN (ANALYZE, BUFFERS, FORMAT TEXT)
+SELECT l.id, l.email, l.status
+FROM leads l
+WHERE l.workspace_id = '11111111-1111-1111-1111-111111111111'
+  AND l.status = 'new'
+ORDER BY l.created_at DESC
+LIMIT 50;
+```
+
+**Red flags in EXPLAIN output:**
+- `Seq Scan` on a large table → missing index
+- `Rows Removed by Filter: 10000+` → high discard ratio, wrong index
+- `Buffers: shared hit=0 read=5000` → no cache, disk I/O heavy
+- `cost=0.00..99999.99` → planner estimated high cost, likely slow
+- Nested loop with large row estimates → N+1 in ORM query
+
+**Minimum query performance targets:**
+- Single record by `(workspace_id, id)`: < 5ms
+- Paginated list (50 rows): < 50ms at 100k leads per workspace
+- Aggregate count: < 100ms (use Redis cache if > 100ms)
+
+---
+
+## Index Selection Guide
+
+### Standard indexes (apply to every table)
+
+```sql
+-- Primary: always present (PK)
+CREATE UNIQUE INDEX ix_leads_id ON leads (id);
+
+-- Workspace scoped list (most common query pattern)
+CREATE INDEX ix_leads_workspace_id ON leads (workspace_id);
+
+-- Workspace + status filter (very common)
+CREATE INDEX ix_leads_workspace_status ON leads (workspace_id, status);
+
+-- Workspace + time sort (for paginated lists ordered by created_at)
+CREATE INDEX ix_leads_workspace_created ON leads (workspace_id, created_at DESC);
+```
+
+### GIN index for JSONB search
+
+```sql
+-- When you need to query inside a JSONB field
+CREATE INDEX ix_sequence_steps_config_gin ON sequence_steps USING gin (config);
+-- Enables: WHERE config @> '{"channel": "email"}'
+```
+
+### Partial index for boolean/status flags
+
+```sql
+-- Index only the rows you actually query — smaller, faster
+CREATE INDEX ix_outbox_events_pending ON outbox_events (created_at)
+  WHERE processed_at IS NULL;  -- Only indexes unprocessed events
+```
+
+### pgvector ivfflat index (for similarity search)
+
+```sql
+-- lists parameter: sqrt(total_rows). For 1M chunks: lists=1000
+-- Always set ef_search at query time for accuracy/speed trade-off
+CREATE INDEX ix_knowledge_chunks_embedding ON workspace_knowledge_chunks
+  USING ivfflat (embedding vector_cosine_ops)
+  WITH (lists = 100);
+
+-- At query time (in SQLAlchemy):
+await db.execute(text("SET ivfflat.probes = 10"))  -- higher = more accurate, slower
+```
+
+### Trigram index for full-text search
+
+```sql
+-- For ILIKE queries on text fields (name, email search)
+CREATE INDEX ix_leads_email_trgm ON leads USING gin (email gin_trgm_ops);
+-- Enables fast: WHERE email ILIKE '%acme%'
+```
+
+---
+
+## Query Anti-Patterns
+
+| Anti-pattern | Problem | Fix |
+|---|---|---|
+| `SELECT *` on wide table | Fetches unused columns, kills cache efficiency | List only needed columns |
+| `WHERE status = 'active'` without `workspace_id` | Full table scan + cross-tenant data | Always prefix `workspace_id = ?` |
+| `ORDER BY RANDOM()` | Full table scan + sort | Use cursor-based pagination |
+| Unbounded `SELECT ... FROM events` | events table grows to billions, OOM | Always add time range + LIMIT |
+| `COUNT(*)` on large table per request | Slow, not cached | Cache in Redis with TTL, or use `pg_class.reltuples` estimate |
+| Correlated subquery in SELECT | Executes once per row (N+1 at DB level) | Use LEFT JOIN or selectinload |
+| `NOT IN (SELECT ...)` with NULLs | Returns empty if subquery has any NULL | Use `NOT EXISTS` instead |
+
+---
+
+## Migration Review Checklist (before running `alembic upgrade head`)
+
+- [ ] **`downgrade()` is real** — not `pass`, it actually reverses the migration
+- [ ] **No table locks** — `ADD COLUMN` without DEFAULT is instant; `ADD COLUMN DEFAULT X` can lock large tables in older PG versions (PG11+: safe for non-volatile defaults)
+- [ ] **NOT NULL + no default on existing table** — will fail if any rows exist; add `server_default` or backfill first
+- [ ] **Index creation uses `CREATE INDEX CONCURRENTLY`** — avoids table lock on production. Add `postgresql_concurrently=True` in Alembic op:
+  ```python
+  op.create_index("ix_leads_status", "leads", ["workspace_id", "status"],
+                   postgresql_concurrently=True)
+  ```
+- [ ] **Column renames use two-phase migration**: Phase 1: add new column. Phase 2: backfill. Phase 3: drop old column.
+- [ ] **Migration tested locally**: `alembic upgrade head` succeeds, then `alembic downgrade -1` succeeds
+- [ ] **No cross-service grants** — migration must not GRANT access to another service's role
+
+---
+
+## Data Migration (Backfill) Pattern
+
+When adding a non-nullable column to an existing table with data:
+
+```python
+# Migration: safe backfill pattern
+def upgrade() -> None:
+    # Step 1: Add nullable column
+    op.add_column("leads", sa.Column("enrichment_status", sa.Text(), nullable=True))
+    
+    # Step 2: Backfill in batches (avoid locking)
+    op.execute("""
+        UPDATE leads SET enrichment_status = 'pending'
+        WHERE enrichment_status IS NULL
+    """)
+    
+    # Step 3: Now set NOT NULL
+    op.alter_column("leads", "enrichment_status", nullable=False,
+                    server_default=sa.text("'pending'"))
+
+def downgrade() -> None:
+    op.drop_column("leads", "enrichment_status")
+```
+
+---
+
+## Events Table Partitioning Strategy
+
+The `events` (analytics-service) table will reach billions of rows. Use range partitioning by month:
+
+```sql
+CREATE TABLE events (
+    id UUID NOT NULL,
+    workspace_id UUID NOT NULL,
+    event_type TEXT NOT NULL,
+    occurred_at TIMESTAMPTZ NOT NULL DEFAULT NOW(),
+    payload JSONB
+) PARTITION BY RANGE (occurred_at);
+
+-- Create partitions for upcoming months
+CREATE TABLE events_2025_01 PARTITION OF events
+    FOR VALUES FROM ('2025-01-01') TO ('2025-02-01');
+```
+
+**In Alembic**: create partitioned table from day one. Retroactive partitioning is painful.
+
+---
+
+## Connection Pool Awareness (Supabase + PgBouncer)
+
+Supabase uses PgBouncer in transaction mode. This means:
+- **No `SET` statements that persist** — any `SET LOCAL` is lost after transaction
+- **No `pg_advisory_lock`** — connection affinity not guaranteed
+- **Max pool size**: match `POOL_SIZE` in service settings to avoid "too many connections"
+- **SQLAlchemy pool settings**:
+
+```python
+engine = create_async_engine(
+    settings.DATABASE_URL,
+    pool_size=5,           # per Cloud Run instance — stay low (2-10)
+    max_overflow=10,       # burst capacity
+    pool_timeout=30,
+    pool_recycle=1800,     # recycle connections every 30min
+)
+```
+
+For `ivfflat.probes`, use within a transaction (transaction-scoped SET is safe with PgBouncer):
+```python
+async with db.begin():
+    await db.execute(text("SET LOCAL ivfflat.probes = 10"))
+    result = await db.execute(similarity_query)
+```
+
+---
+
+## JSONB Schema Documentation Pattern
+
+Every JSONB column must have its schema documented in a SQL comment:
+
+```sql
+-- In migration
+op.execute("""
+  COMMENT ON COLUMN sequence_steps.config IS 
+  'JSON schema: {
+    "channel": "email|linkedin|wait|condition",
+    "delay_hours": number,
+    "subject_template": string?,
+    "body_template": string?,
+    "condition_field": string?,
+    "condition_op": "eq|contains|gt",
+    "condition_value": string?
+  }'
+""")
+```
+
+And document in `docs/DATABASE_SCHEMA.md` with the same schema.
+
+---
+
+## Performance Verification Checklist
+
+- [ ] Every new query has a corresponding index (verified with `EXPLAIN ANALYZE`)
+- [ ] `CREATE INDEX` in migrations uses `CONCURRENTLY` to avoid table lock
+- [ ] pgvector index has appropriate `lists` parameter for the expected row count
+- [ ] Paginated queries use `LIMIT + OFFSET` or cursor-based pagination (cursor preferred at > 100k rows)
+- [ ] JSONB queries use GIN index when filtering inside the JSON
+- [ ] Partial indexes used for flag-filtered queries (e.g., `WHERE published = FALSE`)
+- [ ] `DATABASE_SCHEMA.md` updated with new table/column definitions
+- [ ] Migration roundtrip tested: `upgrade head` → `downgrade -1` → `upgrade head` succeeds

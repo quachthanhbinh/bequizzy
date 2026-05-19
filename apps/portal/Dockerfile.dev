@@ -1,0 +1,15 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Install deps first (cached layer)
+COPY package.json package-lock.json* ./
+RUN npm install --legacy-peer-deps
+
+# Use polling for file watching on Windows host bind mounts
+ENV WATCHPACK_POLLING=true
+ENV NEXT_TELEMETRY_DISABLED=1
+
+EXPOSE 3000
+
+CMD ["node_modules/.bin/next", "dev", "--port", "3000"]

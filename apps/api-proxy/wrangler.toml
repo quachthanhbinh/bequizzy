@@ -1,0 +1,12 @@
+name = "api-proxy"
+compatibility_date = "2024-09-23"
+main = "worker.js"
+
+# ── Production environment ────────────────────────────────────────────────────
+# Deploy with: wrangler deploy --env production
+[env.production]
+name = "api-proxy"
+route = { pattern = "api.revlooper.com/*", zone_name = "revlooper.com" }
+
+[env.production.vars]
+ORIGIN = "https://api-gateway-smlhx7kntq-as.a.run.app"

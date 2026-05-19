@@ -1,0 +1,114 @@
+version: "3.9"
+
+networks:
+  bequizzy:
+    driver: bridge
+
+volumes:
+  pgdata:
+
+x-service-defaults: &service-defaults
+  restart: unless-stopped
+  networks:
+    - bequizzy
+
+services:
+  # ─── Infrastructure ────────────────────────────────────────────────────────
+  postgres:
+    <<: *service-defaults
+    image: postgres:16-alpine
+    container_name: bequizzy-postgres
+    environment:
+      POSTGRES_USER: bequizzy
+      POSTGRES_PASSWORD: bequizzy_dev
+      POSTGRES_DB: bequizzy
+    ports:
+      - "5435:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./infra/postgres/init.sql:/docker-entrypoint-initdb.d/01_init.sql:ro
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bequizzy"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  redis:
+    <<: *service-defaults
+    image: redis:7-alpine
+    container_name: bequizzy-redis
+    ports:
+      - "6379:6379"
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  # ─── Backend Services (Go/Gin) ────────────────────────────────────────────
+  api-gateway:
+    <<: *service-defaults
+    build: ./services/api-gateway
+    container_name: bequizzy-api-gateway
+    volumes:
+      - ./services/api-gateway:/app
+    env_file: .env
+    environment:
+      REDIS_URL: redis://redis:6379
+      WORKSPACE_SERVICE_URL: http://workspace-service:8001
+      LEAD_SERVICE_URL: http://lead-service:8002
+      CAMPAIGN_SERVICE_URL: http://campaign-service:8003
+      BILLING_SERVICE_URL: http://billing-service:8004
+      AI_SERVICE_URL: http://ai-service:8005
+      NOTIFICATION_SERVICE_URL: http://notification-service:8006
+    ports:
+      - "8000:8000"
+    depends_on:
+      - postgres
+      - redis
+    command: air -c .air.toml
+
+  workspace-service:
+    <<: *service-defaults
+    build: ./services/workspace-service
+    container_name: bequizzy-workspace-service
+    volumes:
+      - ./services/workspace-service:/app
+    env_file: .env
+    ports:
+      - "8001:8001"
+    depends_on:
+      - postgres
+    command: air -c .air.toml
+
+  # ─── Frontend ─────────────────────────────────────────────────────────────
+  portal:
+    <<: *service-defaults
+    build:
+      context: ./apps/portal
+      dockerfile: Dockerfile.dev
+    container_name: bequizzy-portal
+    env_file: ./apps/portal/.env.local
+    environment:
+      NEXT_PUBLIC_API_URL: http://localhost:8000
+    volumes:
+      - ./apps/portal:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api-gateway
+
+  page:
+    <<: *service-defaults
+    build:
+      context: ./apps/page
+      dockerfile: Dockerfile.dev
+    container_name: bequizzy-page
+    volumes:
+      - ./apps/page:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3001:3001"

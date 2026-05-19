@@ -1,0 +1,19 @@
+# ── Production tfvars template ────────────────────────────────────────────────
+# Copy to production.tfvars and fill in values.
+# Never commit production.tfvars to source control.
+# Store in GCP Secret Manager or CI/CD secrets.
+
+project_id = "revlooper-production"
+region     = "asia-southeast1"
+zone       = "asia-southeast1-a"
+environment = "production"
+image_tag  = "latest"  # overridden by CI/CD to the commit SHA
+
+domain = "revlooper.com"
+
+# Supabase connection string — obtain from Supabase dashboard → Project Settings → Database
+# Format: postgresql+asyncpg://postgres:[PASSWORD]@db.[REF].supabase.co:5432/postgres
+db_host = "db.YOUR_SUPABASE_REF.supabase.co"
+
+# Memorystore Redis — 1 GB for staging, 5 GB for production
+redis_memory_gb = 5

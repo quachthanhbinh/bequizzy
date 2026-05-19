@@ -1,0 +1,47 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.js
+.yarn/install-state.gz
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# local env files
+.env*.local
+.env.staging
+# .env.production is intentionally committed — all values are NEXT_PUBLIC_* (client-side safe)
+# Supabase anon key is public by design. Do NOT commit .env*.local (contains secrets).
+
+# vercel
+.vercel
+
+# wrangler local state
+.wrangler/
+
+# opennext build output
+.open-next/
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts

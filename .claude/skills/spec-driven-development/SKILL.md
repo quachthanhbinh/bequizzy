@@ -5,7 +5,7 @@ description: "Use when planning features, designing systems, creating specs, bra
 
 # Spec-Driven Development (SDD)
 
-Spec-Driven Development ensures every feature is fully designed, reviewed, and planned before a single line of code is written. This is the **mandatory entry point for all non-trivial work** in this project.
+Spec-Driven Development ensures every feature is fully designed, reviewed, and planned before a single line of code is written. This is the **mandatory entry point for all non-trivial work** in RevLooper.
 
 <HARD-GATE>
 Do NOT write any implementation code, scaffold any project, or take any implementation action until a spec has been written, reviewed, and approved by the user. This applies to EVERY feature regardless of perceived simplicity.

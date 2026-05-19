@@ -15,15 +15,17 @@ cd services/{service-name}
 pytest -v --cov=app --cov-report=term-missing
 
 # Frontend
-cd frontend
+cd apps/portal
 npx vitest run
 
-# E2E (only if user-facing behavior changed)
-cd frontend
+# E2E — MANDATORY for any user-facing change (new page, new form, changed flow)
+# Invoke the qa-engineer agent, or run directly:
+cd apps/portal
 npx playwright test e2e/{relevant}.spec.ts
 ```
 
 **Gate:** ALL tests pass. Zero tolerance for "unrelated" failures.
+**E2E Gate:** For any user-facing feature, at least one Playwright E2E test must exist and pass before this step is considered complete. If no spec file covers the changed UI, the qa-engineer agent must write it first.
 
 ## Step 2: Coverage Threshold
 
@@ -123,7 +125,17 @@ alembic downgrade -1 && alembic upgrade head   # roundtrip — must succeed
 
 Invoke the **code-reviewer** agent or run the `code-review-workflow` against all changed files.
 
-## Step 10: Done Declaration
+## Step 10: E2E Coverage (REQUIRED for user-facing features)
+
+For every user-facing feature or UI change:
+- Invoke the **qa-engineer** agent to write or update Playwright E2E tests
+- All E2E tests must pass: `npx playwright test --project=chromium`
+- Every acceptance criterion in the spec's `TESTS.md` must have at least one E2E scenario
+- If a route, form, or flow was changed, the corresponding spec file in `apps/portal/e2e/` must be updated
+
+**Gate:** no user-facing feature is done until E2E tests pass.
+
+## Step 11: Done Declaration
 
 Report back to the user with:
 - Tests passing: count
