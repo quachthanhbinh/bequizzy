@@ -40,7 +40,7 @@
 | **A09 Logging Failures** | ✅ | <structured JSON, no PII at INFO+, trace_id> |
 | **A10 SSRF** | ✅ | <allowlisted outbound> |
 
-## RevLooper Non-Negotiables Check
+## Platform Non-Negotiables Check
 - [ ] Every DB query scoped by `workspace_id`
 - [ ] No imports of another service's SQLAlchemy models
 - [ ] Credits deducted via billing-service BEFORE AI call

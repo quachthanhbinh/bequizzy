@@ -14,7 +14,7 @@ Implement the design from [DESIGN.md](DESIGN.md) per the requirements in [PRD.md
 ### Phase 1 — Internal validation (week 1)
 - Apply migration to staging
 - Deploy services with flag default OFF
-- Enable for **internal RevLooper workspace only**
+- Enable for **internal BeQuizzy workspace only**
 - Exit gate: <criterion>
 
 ### Phase 2 — Design partners (week 2)
