@@ -38,7 +38,7 @@ It is simultaneously four things:
 - **An Interactive Simulation Engine** — the heart of BeQuizzy. Every subject is rendered as an interactive, real-world simulation: chemistry experiments on a virtual lab bench, physics sandboxes, 3D geometry sculptors, live conversation scenes for languages, virtual instruments for music. Learning happens by **doing and discovering**, not reading.
 - **An AI Personal Tutor** — an always-on, adaptive tutor that guides learners through simulations with Socratic questioning. The AI watches what the learner experiments with, identifies misconceptions, and steers discovery — covering STEM, languages, exam prep, life skills, arts, music, and beyond.
 - **A Marketplace for Human Tutors** — qualified teachers and domain experts can receive students 1:1, open group classes, and use BeQuizzy's interactive simulation tools live in session to make teaching more engaging and memorable.
-- **An AI Avatar Creator Studio** — tutors package their expertise, teaching style, and knowledge base into a personalized AI version of themselves. Students purchase a license to learn from a tutor's AI avatar on demand, at any time.
+- **An AI Knowledge Studio** — tutors systematically contribute their expertise, **subject by subject**, into a complete, structured AI Knowledge Set: curriculum architecture, concept explanations, question banks, teaching logic trees, common mistake libraries, and assessment frameworks. This packaged knowledge set is published on the marketplace. Students purchase a license to learn from the tutor's AI — benefiting from their full teaching methodology, curated curriculum, and subject mastery, available 24/7 without booking.
 
 The core belief: **the best way to learn is to experience it** — every concept should be tangible, visual, and interactive before it becomes abstract knowledge.
 
@@ -60,7 +60,7 @@ The core belief: **the best way to learn is to experience it** — every concept
 | **Affordability barrier** | A good private tutor costs 200,000–500,000₫/hour. Not every family can afford it | Subscription at a fraction of the cost; AI tutor never tires, never judges |
 | **Subject breadth** | School covers core academics. No one teaches you Morse code, body language, or how to play piano affordably | Broadest learning platform ever built — academics to life skills to arts |
 | **Lifelong learning gap** | After school, most people stop learning systematically | The platform grows with the learner — from finger-painting at 5 to GRE prep at 28 to learning piano at 55 |
-| **Knowledge monetization for teachers** | A brilliant tutor in Đà Lạt can only teach students within driving distance | AI Avatar Studio lets any expert's knowledge reach the world 24/7 |
+| **Knowledge monetization for teachers** | A brilliant tutor in Đà Lạt can only teach students within driving distance | AI Knowledge Studio lets any expert's knowledge reach the world 24/7 — packaged as a structured AI curriculum, not limited by time or geography |
 | **Global citizenship readiness** | Local curricula prepare children for local life, not a globalized world | Multilingual by design; cultural context in every subject; world geography, history, communication |
 
 ### Global Citizenship Education Track
@@ -381,7 +381,7 @@ Each rank unlocks: new game modes, harder difficulty, leaderboard access, cosmet
 | **Learning Sessions Completed per Learner per Week** | Depth of engagement — signals genuine learning behavior, not just logins |
 | **AI Tutor Satisfaction Score (ATSS)** | Quality of AI tutoring interactions — rated after each session |
 | **Tutor-to-Student Match Rate** | Marketplace health — % of students who successfully find and book a human tutor |
-| **AI Avatar Licenses Purchased** | Monetization signal — validates the AI Avatar Creator Studio model |
+| **AI Knowledge Set Licenses Purchased** | Monetization signal — validates the AI Knowledge Studio marketplace model |
 | **Monthly Recurring Revenue (MRR)** | Business health |
 
 ---
@@ -463,10 +463,10 @@ Duolingo/Khan ─►
                     Udemy/Coursera ─────────────────►
                               Teachable/Thinkific ──────►
                                                    Maven ──►
-                                                         [BeQuizzy + AI Avatar]
+                                                         [BeQuizzy + AI Knowledge Studio]
 ```
 
-**BeQuizzy's unique intersection:** Broadest subject coverage + Adaptive AI Tutor + Human Tutor Marketplace + AI Avatar Creator Economy — all in one platform.
+**BeQuizzy's unique intersection:** Broadest subject coverage + Adaptive AI Tutor + Human Tutor Marketplace + AI Knowledge Studio (structured knowledge economy) — all in one platform.
 
 ---
 
@@ -504,8 +504,8 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 | Group Class Management | | | ✓ | | ✗ | ✗ | ✓ | ✓ |
 | Homework & Assignment Manager | | | ✓ | | ✗ | ✗ | ✓ | ✓ |
 | Tutor Class Recording + AI Summary | | | ✓ | | ✗ | ✗ | ✓ | ✓ |
-| AI Avatar Creator Studio | | ✓ | ✓ | ✓ | ✗ | ✗ | ✗ | ✓ |
-| AI Avatar Marketplace (purchase) | | ✓ | ✓ | ✓ | Preview | Per license | Per license | ✓ |
+| AI Knowledge Studio (build AI Knowledge Set) | | ✓ | ✓ | ✓ | ✗ | ✗ | ✗ | ✓ |
+| AI Knowledge Marketplace (purchase access) | | ✓ | ✓ | ✓ | Preview | Per license | Per license | ✓ |
 | Reflex Rank Progression (Apprentice → Legendary) | | ✓ | | ✓ | 2 types | All 5 | ✓ | ✓ |
 | Peer Learning Groups | | | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ |
 | Certificate & Credential Engine | | | ✓ | | ✗ | ✓ | ✓ | ✓ |
@@ -570,8 +570,54 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 | **Interactive Simulation Engine** (full breadth) | Chemistry + Physics + Biology + Math + Language + Music + Reflex all as live simulations requires enormous engineering investment. Competitors (Duolingo, Khan Academy, Synthesis) each have 1–2 simulations. BeQuizzy will have 20+. |
 | **Scientific Discoveries Lab** | Requires curation of primary-source papers + interactive experiment design per discovery. Not a template — each scenario is hand-crafted. Grows into a library that compounds as a moat. |
 | **Reflex Training Arena** | Nobody else pairs cognitive reflex training (visual/auditory/hand/verbal/cognitive) with academic subject learning. The cross-skill insight (ear training → tonal language fluency) is a unique positioning. |
-| **AI Avatar Creator Studio** | Network effect: more tutors create avatars → richer marketplace → more learner demand → more tutors want to join. First mover in edu-specific AI avatar market. The tutor's training data stays on BeQuizzy — they lose it if they leave. |
+| **AI Knowledge Studio** | Network effect: more tutors build Knowledge Sets → richer marketplace → more learner demand → more tutors want to join. The tutor's entire knowledge contribution (curriculum, Q&A, teaching logic) is stored on BeQuizzy — they lose all of it if they leave. First mover in structured edu-knowledge packaging for AI. |
 | **Language Conversation Mode + Pronunciation AI** | Real-time phoneme-level pronunciation feedback requires specialized ASR models trained per language. Competitors (Duolingo) have this for a few languages. BeQuizzy targets SEA languages (Vietnamese, Thai, Bahasa, Tagalog) that others ignore. |
+
+#### How the AI Knowledge Studio Works (Inspired by RevLooper's AI Employee Model)
+
+> A tutor's Knowledge Set is **not** a personality clone. It is a structured, subject-complete knowledge architecture — built contribution by contribution — that the AI uses to teach students systematically.
+
+**The 6-Layer Knowledge Contribution Model:**
+
+| Layer | What the Tutor Contributes | How the AI Uses It |
+|---|---|---|
+| **1. Curriculum Architecture** | Define subject scope, units, topics, learning sequence, prerequisites (e.g., "fractions before algebra") | AI maps a personalized learning path for each student based on their level and goal |
+| **2. Concept Library** | Topic-by-topic explanations, analogies, real-world examples, diagrams — in the tutor's teaching style | AI explains concepts to students using the tutor's chosen approach and language |
+| **3. Question Bank** | MCQ, open-ended, simulation-linked questions; model answers; common wrong answers + why they're wrong | AI assigns the right questions at the right difficulty; recognizes misconceptions and corrects them |
+| **4. Teaching Logic Trees** | "If student answers X → explain Y. If student struggles with Z → try this alternative approach" | AI adapts its tutoring path in real time based on student responses |
+| **5. Common Mistakes Library** | Documented errors from years of real teaching; why each mistake happens; how to fix it | AI proactively catches errors before they become habits; explains the root cause |
+| **6. Assessment Framework** | How to test mastery per topic; what score = ready to advance; capstone challenge design | AI gates advancement until mastery is proven; generates appropriate final assessments |
+
+**Publishing Flow:**
+
+```
+TUTOR BUILDS KNOWLEDGE SET:
+  Create subject → add curriculum map → fill concept library → build question bank
+  → define teaching logic → log common mistakes → set assessment rubrics
+  → Preview as student → Publish to marketplace → Set license price
+
+STUDENT ACCESSES:
+  Browse marketplace → preview (3 free interactions)
+  → Purchase license (monthly or lifetime)
+  → AI teaches using tutor's full knowledge system
+  → Combined with BeQuizzy's simulation engine (e.g., IELTS AI uses Speaking Simulator)
+  → Progress tracked in BeQuizzy Learning Record
+  → Tutor receives passive income + sees aggregate anonymized learning analytics
+```
+
+**What makes a Knowledge Set valuable:**
+- **Depth** — a tutor with 10 years teaching IELTS Writing has documented 200+ common student mistakes; that library is irreplaceable
+- **Curation** — not all content is equal; a trusted tutor's question bank outperforms generic AI-generated questions
+- **Methodology** — a specific teaching sequence (e.g., "grammar before vocabulary before conversation") reflects hard-won pedagogical experience
+- **Network effect** — as more students use a Knowledge Set, their interaction data improves the AI's teaching logic (with consent), making the Set smarter over time
+
+**Revenue model:**
+- Tutor earns **70%** of every license sale
+- BeQuizzy earns **30%** (platform + AI infrastructure)
+- Tutor can set: price tier, preview depth, license duration (monthly / lifetime), age restriction
+- Top Knowledge Sets are featured in the marketplace; quality signal = student completion rate + score improvement delta
+
+
 
 #### Moat Feature Details
 
@@ -579,8 +625,8 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 |---|---|---|
 | **Scientific Discoveries Lab** | Free: 3 scenarios · Pro: all 12+ | Re-live Newton, Curie, Darwin, Watson-Crick, Hubble, Tesla + more; hypothesis-first; linked to original papers/patents |
 | **Reflex Training Arena** | Free: 2 types · Pro: all 5 | Visual, Auditory, Hand Speed, Verbal Speed, Cognitive; baseline benchmark; Apprentice → Legendary ranked system |
-| **AI Avatar Creator Studio** | Academy plan only | Tutors upload content + record sessions → AI trains on their style → avatar listed in marketplace |
-| **AI Avatar Marketplace** | Free preview · Purchase per license | Browse and preview any avatar; buy monthly or lifetime license; tutor earns 70% of revenue |
+| **AI Knowledge Studio** | Academy plan only | Tutor builds complete Knowledge Set subject by subject (curriculum map → explanations → Q&A bank → teaching logic → assessments) → published on marketplace as a licensable AI teaching product |
+| **AI Knowledge Marketplace** | Free preview · Purchase per license | Browse, preview (3 free interactions), purchase monthly or lifetime license; tutor earns 70% of license revenue |
 | **Language Conversation Mode** | Learner Pro | Immersive AI role-play scenes; real-time waveform pronunciation comparison; phoneme-level scoring |
 | **Extended Simulations** | Learner Pro | Cosmology/astronomy, music studio (piano/guitar), creative arts feedback, life skills (budget/first aid/cooking), body language reader |
 | **AI Music Tutor** | Learner Pro | AI listens via microphone; feedback on pitch, timing, posture; works with piano, guitar, drums |
@@ -632,7 +678,7 @@ TRIGGER 5: Tutor wants group class
 | **Homework & Assignment Manager** | Tutor Pro | Assign, auto-grade MCQ, manual grade open-ended; AI provides written feedback on submissions |
 | **Tutor Class Recording** | Tutor Pro | Auto-records group sessions; AI generates highlighted summary; shared with students |
 | **Session Analytics** | Tutor Pro | See which students are struggling, engagement heatmaps per student, dropout risk alerts |
-| **AI Avatar Creator Studio** | Academy | Tutors package their knowledge into a scalable AI clone; passive income stream |
+| **AI Knowledge Studio** | Academy | Tutors build structured AI Knowledge Sets (not clones — curriculum + Q&A + teaching logic); publish on marketplace; earn passive income per license |
 | **Center Management** | Academy | Multi-teacher workspace; attendance, billing, payroll, student rosters in one view |
 | **White-Label Portal** | Enterprise | Schools deploy BeQuizzy under their own brand |
 | **Corporate Language Training** | Enterprise | Companies purchase seats; team progress dashboards; manager oversight |
@@ -654,7 +700,7 @@ Month 3:  Spaced repetition system knows exactly what to review next
            Reflex rank achieved (e.g., "Specialist" in Visual) → can't transfer rank
            Parent receives weekly reports → invested in the product
 Month 6:  Full learning history → irreplaceable academic record
-           AI Avatar purchased → active license being used
+           AI Knowledge Set license purchased → active daily usage
            Tutor relationship built → emotional attachment
 Year 1+:  Accumulated learning record = personal educational portfolio
            Cannot recreate this history on any other platform
@@ -672,7 +718,7 @@ Year 1+:  Accumulated learning record = personal educational portfolio
 | **Parent Dashboard (weekly reports)** | Parents build a mental model of their child's progress; cancelling feels like losing visibility | Parent's trust in the product becomes a family decision, not individual |
 | **Adaptive Learning Path** | AI knows the learner's exact weak spots, learning pace, and preferred style after months of data | A new platform sees a stranger; BeQuizzy sees a 6-month relationship |
 | **Tutor Relationship** | Learner has booked sessions with a specific tutor who knows their history | Emotional connection; tutor also has incentive to retain student for payout |
-| **AI Avatar License** | Learner has paid for a tutor's AI avatar license; active subscription | Sunk cost + genuine daily usage; license is platform-bound |
+| **AI Knowledge Set License** | Learner has purchased access to a tutor's AI Knowledge Set; using it daily for subject learning | Sunk cost + genuine curriculum progression; license and learning history are platform-bound |
 | **Scientific Discoveries Progress** | 12+ discovery scenarios with completion status and earned badges | "I'm halfway to completing the Physics Discovery Set" = motivation to finish |
 | **Learning Community** | Class leaderboard, peer study groups, friend streaks | Social accountability and FOMO |
 
@@ -755,7 +801,7 @@ Non-negotiable infrastructure features that underpin BeQuizzy as a multi-tenant,
 | Subscription lifecycle | trialing → active → past_due → cancelled |
 | Failed payment retry + dunning emails | Automatic smart retries |
 | Local payment methods | MoMo, VNPay, payOS (Vietnam); Stripe (global) |
-| AI Avatar license purchases | One-time or subscription license purchase for individual AI avatars |
+| AI Knowledge Set license purchases | One-time or subscription license purchase for individual AI Knowledge Sets |
 | Tutor payout system | Weekly automated payouts; tax documentation per country |
 | **Trial period** | 7-day free trial on all paid plans |
 | **Pause subscription** | Freeze billing, keep data, lock AI features |
@@ -830,10 +876,10 @@ BOOK A HUMAN TUTOR
   → Session in Virtual Classroom (video + whiteboard + tools)
   → AI summarizes session and assigns follow-up practice
 
-ACCESS AI AVATARS (Phase 2)
-  Browse AI Avatar Marketplace
-  → Preview a tutor's AI avatar (3 free questions)
-  → Purchase license → chat with tutor's AI clone any time
+ACCESS AI KNOWLEDGE SETS (Phase 2)
+  Browse AI Knowledge Marketplace
+  → Preview a tutor's AI Knowledge Set (3 free interactions)
+  → Purchase license → learn from tutor's structured AI curriculum any time
 
 TRACK PROGRESS
   Learning Record: all sessions, mastery levels, streaks
@@ -859,11 +905,16 @@ OPEN GROUP CLASSES
   → Students enroll → Live group sessions with interactive tools
   → Auto-record → AI summary → share with enrolled students
 
-BUILD AI AVATAR (Phase 2)
-  Upload teaching materials, record Q&A sessions, set teaching persona
-  → AI trains on tutor's content and style
-  → List AI avatar on marketplace → set license price
-  → Earn passive income from AI avatar licenses
+BUILD AI KNOWLEDGE SET (Phase 2 — Academy plan)
+  Open AI Knowledge Studio → select subject
+  → Layer 1: Define curriculum map (units, topics, sequence, prerequisites)
+  → Layer 2: Write concept explanations per topic (text + examples + analogies)
+  → Layer 3: Build question bank (MCQ + open-ended + model answers + wrong-answer explanations)
+  → Layer 4: Define teaching logic trees ("if student struggles with X → try Y")
+  → Layer 5: Log common mistakes library (from real teaching experience)
+  → Layer 6: Set assessment framework (mastery thresholds + capstone challenge)
+  → Preview as a student → Publish to AI Knowledge Marketplace → set license price
+  → Earn 70% of every license sale passively
 ```
 
 ---
@@ -983,15 +1034,26 @@ BEFORE LAUNCH IN A NEW MARKET:
 | **Academy** | $79/mo | 1,990,000₫/mo | All Tutor Pro features · AI Avatar Creator Studio · Avatar marketplace listing · Center management (up to 5 teachers) · 8% commission |
 | **Center Enterprise** | Custom | Custom | Unlimited teachers · White-label portal · Priority support · API access · Custom commission rate |
 
-### AI Avatar Licenses (Student-Facing)
+### AI Knowledge Set Licenses (Student-Facing)
 
-| License Type | Price (USD) | Notes |
-|---|---|---|
-| **Single Avatar – Monthly** | $5–$30/mo | Varies by tutor; tutor sets price within platform limits |
-| **Single Avatar – Lifetime** | $20–$150 one-time | Tutor option to offer lifetime access |
-| **Avatar Bundle** | Custom | Coming Phase 3 — bundle multiple avatars at a discount |
+> A Knowledge Set license gives the student access to a specific tutor's AI — their full curriculum, Q&A bank, teaching logic, and assessment system — for a chosen subject.
 
-> BeQuizzy takes 30% of AI Avatar license revenue; tutor earns 70%.
+| License Type | Price (USD) | Price (VND) | Notes |
+|---|---|---|---|
+| **Single Knowledge Set – Monthly** | $5–$30/mo | 120,000–750,000₫/mo | Tutor sets price within platform limits based on subject depth and demand |
+| **Single Knowledge Set – Lifetime** | $25–$199 one-time | 600,000–4,990,000₫ | Tutor option; includes all future updates the tutor adds to the Knowledge Set |
+| **Subject Bundle** | $15–$50/mo | 350,000–1,250,000₫/mo | Coming Phase 2 — one tutor's complete curriculum across multiple subjects |
+| **Knowledge Set Bundle** | Custom | Custom | Coming Phase 3 — curated bundles from multiple tutors (e.g., "IELTS Complete Pack") |
+
+**Marketplace quality signals (what drives a Knowledge Set's price and ranking):**
+- Student completion rate (% of learners who finish the curriculum)
+- Score improvement delta (average test score before vs. after)
+- Learner retention (% still active after 90 days)
+- Depth score (how many of the 6 knowledge layers are fully built)
+- Review ratings (post-completion student feedback)
+
+> BeQuizzy takes **30%** of AI Knowledge Set license revenue; tutor earns **70%**.
+> Tutors on the Academy plan can publish; Learner Pro users can purchase.
 
 ---
 
