@@ -19,13 +19,19 @@
    - [Local & Regional Products (Vietnam)](#local--regional-products-vietnam)
    - [BeQuizzy Positioning vs. Competitors](#bequizzy-positioning-vs-competitors)
 5. [Features](#5-features)
-   - [Tier 1 — Core (MVP)](#tier-1--core-mvp)
-   - [Tier 2 — Should Have (Month 3–6)](#tier-2--should-have-month-36)
-   - [Tier 3 — Nice to Have (Month 6+)](#tier-3--nice-to-have-month-6)
-   - [Out of Scope](#out-of-scope)
+   - [Feature Strategy Map](#feature-strategy-map)
+   - [5.1 — Core Features](#51----core-features-why-users-come)
+   - [5.2 — Competitive Moat](#52----competitive-moat-why-bequizzy-wins)
+   - [5.3 — Monetization Features](#53----monetization-features-why-users-upgrade--pay)
+   - [5.4 — Retention Mechanics](#54----retention-mechanics-why-users-stay)
+   - [5.5 — Gamification Design Principles](#55--gamification-design-principles)
+   - [5.6 — Assessment & Testing Engine](#56----assessment--testing-engine)
+   - [5.7 — Smart Learning Hub (Mini LMS)](#57----smart-learning-hub-mini-lms)
+   - [5.8 — Out of Scope](#58--out-of-scope)
 6. [Foundation Infrastructure](#6-foundation-infrastructure)
 7. [How It Works](#7-how-it-works)
-8. [Pricing](#8-pricing)
+8. [Geographic Expansion Strategy](#8-geographic-expansion-strategy)
+9. [Pricing](#9-pricing)
 
 ---
 
@@ -33,12 +39,13 @@
 
 BeQuizzy is an **AI-powered interactive learning platform** for ages 5 to adult — because learning is a lifelong process.
 
-It is simultaneously four things:
+It is simultaneously five things:
 
 - **An Interactive Simulation Engine** — the heart of BeQuizzy. Every subject is rendered as an interactive, real-world simulation: chemistry experiments on a virtual lab bench, physics sandboxes, 3D geometry sculptors, live conversation scenes for languages, virtual instruments for music. Learning happens by **doing and discovering**, not reading.
 - **An AI Personal Tutor** — an always-on, adaptive tutor that guides learners through simulations with Socratic questioning. The AI watches what the learner experiments with, identifies misconceptions, and steers discovery — covering STEM, languages, exam prep, life skills, arts, music, and beyond.
-- **A Marketplace for Human Tutors** — qualified teachers and domain experts can receive students 1:1, open group classes, and use BeQuizzy's interactive simulation tools live in session to make teaching more engaging and memorable.
-- **An AI Knowledge Studio** — tutors systematically contribute their expertise, **subject by subject**, into a complete, structured AI Knowledge Set: curriculum architecture, concept explanations, question banks, teaching logic trees, common mistake libraries, and assessment frameworks. This packaged knowledge set is published on the marketplace. Students purchase a license to learn from the tutor's AI — benefiting from their full teaching methodology, curated curriculum, and subject mastery, available 24/7 without booking.
+- **A Teaching Platform for Tutors** — BeQuizzy is the professional workspace where qualified teachers and domain experts run their solo teaching business. Conduct 1:1 and group classes inside a purpose-built virtual classroom. Manage students, build curriculum, assign and grade work, track progress — without stitching together Zoom, Google Sheets, and WhatsApp. BeQuizzy is the tool; tutors bring their students.
+- **A Smart Learning Hub (Mini LMS)** — the connective tissue between learning and progress for both sides. For tutors: a full solo-business operating layer — curriculum planner, session calendar, grade book, parent communication, and student analytics. For learners: personal learning calendar, goal tracking, mastery heatmap, and self-organized **peer study groups** where learners collaborate, quiz each other, and hold each other accountable — no tutor required.
+- **The BeQuizzy Marketplace** — tutors package their teaching expertise into structured **AI Knowledge Sets** (6-layer products: curriculum architecture → concept library → question bank → teaching logic → common mistakes → assessment framework) and publish them for sale. Learners license access to any tutor's AI — learning from their full methodology 24/7, without booking a session. This is BeQuizzy's primary commercial engine: **packaged teaching expertise**, not software.
 
 The core belief: **the best way to learn is to experience it** — every concept should be tangible, visual, and interactive before it becomes abstract knowledge.
 
@@ -60,7 +67,7 @@ The core belief: **the best way to learn is to experience it** — every concept
 | **Affordability barrier** | A good private tutor costs 200,000–500,000₫/hour. Not every family can afford it | Subscription at a fraction of the cost; AI tutor never tires, never judges |
 | **Subject breadth** | School covers core academics. No one teaches you Morse code, body language, or how to play piano affordably | Broadest learning platform ever built — academics to life skills to arts |
 | **Lifelong learning gap** | After school, most people stop learning systematically | The platform grows with the learner — from finger-painting at 5 to GRE prep at 28 to learning piano at 55 |
-| **Knowledge monetization for teachers** | A brilliant tutor in Đà Lạt can only teach students within driving distance | AI Knowledge Studio lets any expert's knowledge reach the world 24/7 — packaged as a structured AI curriculum, not limited by time or geography |
+| **Knowledge monetization for teachers** | A brilliant tutor in Đà Lạt can only teach students within driving distance | BeQuizzy Marketplace packages any expert’s knowledge as a licensable AI curriculum — reaching learners 24/7, not limited by geography |
 | **Global citizenship readiness** | Local curricula prepare children for local life, not a globalized world | Multilingual by design; cultural context in every subject; world geography, history, communication |
 
 ### Global Citizenship Education Track
@@ -220,6 +227,146 @@ The flagship simulation. Every element and compound is rendered with physical re
 
 ---
 
+### History & Social Studies Simulator
+
+> **Learn history by living through its turning points — not by memorizing dates.**
+> Every major event is an interactive decision tree: learners step into the shoes of key figures, face the real choices they faced, and see how different decisions change the outcome.
+
+| Simulation | Detail |
+|---|---|
+| **Historical Timeline Explorer** | Interactive zoomable timeline of world and regional history; click any event to dive into causes, key figures, and global ripple effects; zoom from century view to day-of-event |
+| **Decision Point Simulation** | Choose-your-own-path historical scenarios (e.g., "You are Hồ Chí Minh in 1945 — which alliance do you choose?"); see how different decisions alter history |
+| **Comparative History Canvas** | Same event told simultaneously from multiple national perspectives (e.g., WWII from Vietnamese, Japanese, American, and French viewpoints); bias literacy training embedded |
+| **Primary Source Analyzer** | AI presents original historical documents (proclamations, treaties, letters, propaganda posters); learner analyzes language, context, intent — AI guides with Socratic questions |
+| **Historical Map Animator** | Borders and empires shifting over centuries on a real map canvas; learners trace how geography shaped political history |
+| **Southeast Asian Civilizations Vault** | Deep-dive into Angkor, Majapahit, Đại Việt, Ayutthaya, Srivijaya — artifacts, architecture, customs, trade routes; often absent from Western-focused history curricula |
+
+**Curriculum alignment:** Vietnam (Lịch sử lớp 6–12) · Indonesia (Sejarah) · Thailand (Social Studies: History strand) · Malaysia (Sejarah) · Philippines (Araling Panlipunan) · Singapore (History O/A-Level)
+
+---
+
+### Geography & Earth Sciences Explorer
+
+> **See the Earth as a living, breathing system — not a list of capitals to memorize.**
+
+| Simulation | Detail |
+|---|---|
+| **Interactive World Atlas** | Zoomable world map with 195 countries; click any for geography, climate, economy, culture, and population data rendered as visual infographics |
+| **Plate Tectonics Simulator** | Animate continental drift over 500 million years; trigger earthquakes and volcanic eruptions in real time; build mountain ranges by colliding plates |
+| **Weather & Climate Lab** | Model how latitude, altitude, ocean currents, and greenhouse gas concentration affect local and global climate; simulate +2°C and +4°C scenarios |
+| **Natural Disaster Simulator** | Animate how earthquakes, tsunamis, typhoons, and floods develop from initial trigger to impact zone; explore disaster preparedness and early-warning systems |
+| **Water Cycle & Ecosystems** | Trace a water molecule through the full hydrological cycle; model food webs; simulate the cascading effect of deforestation or dam construction |
+| **Southeast Asia Focus** | Special module: Mekong River ecosystem and political tension, archipelago geology (Ring of Fire), monsoon patterns and agricultural impact, regional country profiles |
+
+**Curriculum alignment:** Vietnam (Địa lý lớp 6–12) · Indonesia (Geografi, IPS) · Thailand (Social Studies: Geography strand) · Malaysia (Geografi) · Singapore (Geography O/A-Level)
+
+---
+
+### Literature & Language Arts Studio
+
+> **Language comes alive when you experience its stories — not just its grammar rules.**
+
+| Simulation | Detail |
+|---|---|
+| **Story World Visualizer** | Classic literary works rendered as navigable visual scenes; learner walks through the story world, meets characters, makes choices that reveal themes — comprehension through immersion |
+| **Writing Workshop** | AI-guided essay and narrative writing with real-time structural feedback; identifies thesis clarity, paragraph coherence, argument strength; tracks improvement across drafts |
+| **Poetry Decoder** | Read a poem; AI segments it into literary devices (metaphor, imagery, rhythm, allusion, irony); learner tags each device in the text with immediate feedback |
+| **Rhetoric & Argument Lab** | Identify logical fallacies, rhetorical devices, and persuasion techniques in real speeches and historical texts; build critical reading skills |
+| **Reading Comprehension Accelerator** | Adaptive reading passages scaled by Lexile level; speed-reading trainer with comprehension engine targeting higher-order thinking questions |
+| **Vietnamese Literature Module** | Deep coverage of Vietnamese literary canon: Truyện Kiều (Nguyễn Du), Chinh Phụ Ngâm, modern prose, war poetry — cultural and historical context embedded in each work |
+| **SEA Literature Gallery** | Representative works from Thai, Indonesian, Filipino, Malay, and Singaporean literature; comparative themes across cultures (identity, colonial legacy, nature) |
+
+**Curriculum alignment:** Vietnam (Ngữ văn lớp 1–12) · Indonesia (Bahasa Indonesia) · Thailand (Thai Language) · Malaysia (Bahasa Melayu, Kesusasteraan Melayu) · Philippines (Filipino) · Singapore (English Language, Literature)
+
+---
+
+### Computer Science & Programming Lab
+
+> **Code is the language of the future — every learner deserves to speak it.**
+
+| Simulation | Detail |
+|---|---|
+| **Visual Block Coder** | Drag-and-drop block coding (Scratch-style) for ages 7+; build games, animations, and interactive stories; no syntax errors possible — pure logic training |
+| **Python & JavaScript Sandbox** | In-browser live code editor with instant output; pre-built starter projects (calculator, quiz game, simple data visualizer); AI tutor explains errors in plain language |
+| **Algorithm Visualizer** | Animate sorting (bubble, quicksort, merge sort) and search algorithms on live data arrays; learner controls speed and data set; compare time complexity visually |
+| **Data Structures Explorer** | Interactive stacks, queues, linked lists, trees, and graphs; drag nodes, trace traversal paths, watch memory allocation update in real time |
+| **Logic Gate Circuit** | Build AND/OR/NOT/XOR gate circuits; trace binary signals through layers; assemble a half-adder from scratch — understanding how computers compute at the hardware level |
+| **AI & Machine Learning Primer** | Feed a visual dataset into a neural network; watch it learn in real time; tune learning rates and observe overfitting; pure intuition-building, no coding required |
+| **Cybersecurity Escape Room** | Solve a series of puzzles involving password strength, phishing recognition, encryption basics (Caesar cipher → RSA concept), and safe online behavior |
+
+**Curriculum alignment:** Vietnam (Tin học lớp 3–12) · Indonesia (Informatika) · Thailand (Technology strand) · Malaysia (Teknologi Maklumat dan Komunikasi, Sains Komputer) · Philippines (Computer) · Singapore (Computing O/A-Level)
+
+---
+
+### Economics & Financial Literacy Simulator
+
+> **Understanding money and markets is among the most practical — and most neglected — subjects in school.**
+
+| Simulation | Detail |
+|---|---|
+| **Supply & Demand Lab** | Drag sliders to shift supply, demand, price floors, and ceilings; watch equilibrium price and quantity adjust in real time; real-world scenarios (oil shock, rice harvest failure, pandemic disruption) |
+| **Personal Finance Planner** | Given a starting income and random life events (job change, medical bill, wedding); make financial decisions over a simulated 10-year timeline; compound interest visualized as a growing bar |
+| **Stock Market Simulator** | Paper-trade with historical market data; learn P/E ratios, dividends, market sentiment, and risk vs. return — zero real money, maximum learning |
+| **Inflation & Monetary Policy** | Animate how central bank decisions (interest rates, quantitative easing) ripple through an economy; simulate hyperinflation (1920s Germany, Zimbabwe) and recession scenarios |
+| **Entrepreneurship Sandbox** | Start a virtual micro-business; manage costs, pricing, marketing budget, and an AI competitor; survive 12 simulated months without going bankrupt |
+| **Global Trade Explorer** | Simulate comparative advantage between two countries; track import/export flow changes; understand why countries trade and what happens when supply chains break |
+
+**Curriculum alignment:** Vietnam (Kinh tế lớp 10–12, GDCD) · Indonesia (Ekonomi, IPS) · Thailand (Social Studies: Economics strand) · Malaysia (Ekonomi, Perdagangan) · Philippines (Economics, Business Math) · Singapore (Economics A-Level)
+
+---
+
+### Civics, Ethics & Social Values Studio
+
+> **Citizens who understand how their society works are citizens who can change it for the better.**
+
+| Simulation | Detail |
+|---|---|
+| **Government Structure Explorer** | Interactive visual of how different government types work (parliamentary democracy, presidential republic, constitutional monarchy); drill down from national to provincial to local level for Vietnam, Indonesia, Thailand, Malaysia, Philippines, Singapore |
+| **Law & Justice Simulator** | Walk through a simplified legal case from complaint → investigation → trial → verdict; understand constitutional rights and civic responsibilities at each stage |
+| **Voting & Electoral Systems** | Simulate the same election under first-past-the-post, proportional representation, and preferential voting; see how identical votes produce different outcomes — why system design matters |
+| **Environmental Policy Maker** | Given a real SEA environmental crisis (Mekong dam, coral reef bleaching, Jakarta flooding); propose policies and see AI-simulated outcomes including economic, social, and ecological trade-offs |
+| **Social Contract Explorer** | Understand foundational social theories (Hobbes, Locke, Rousseau, Confucian ethics, Buddhist social ethics) and how they shaped different societies' governance values today |
+| **Ethics in the Modern World** | Scenario-based moral dilemmas (AI and privacy, social media and truth, climate and development); learner articulates and defends positions; AI presents counterarguments |
+
+**Curriculum alignment:** Vietnam (GDCD / Giáo dục Kinh tế và Pháp luật lớp 1–12) · Indonesia (Pancasila dan Kewarganegaraan) · Thailand (Social Studies: Civics strand) · Malaysia (Pendidikan Moral, Pendidikan Islam) · Philippines (Edukasyon sa Pagpapakatao) · Singapore (Character & Citizenship Education)
+
+---
+
+### Visual Arts & Design Studio
+
+> **Creativity is a cognitive skill. Art teaches you to observe the world with precision and express ideas without words.**
+
+| Simulation | Detail |
+|---|---|
+| **Drawing Fundamentals Lab** | Step-by-step guided drawing exercises on a digital canvas; AI analyzes line quality, proportion, and perspective; gamified progression from basic geometric forms to complex portraits |
+| **Color Theory Workshop** | Interactive color wheel; mix digital pigments; explore warm/cool, complementary, analogous, and triadic color schemes; apply directly to design challenges with AI critique |
+| **Design Thinking Playground** | Given a real-world problem (e.g., "design a better school lunch container"); sketch → prototype → test cycle with AI feedback on functionality, aesthetics, and user needs |
+| **Art History Gallery** | Walk through interactive virtual galleries organized by movement — Western (Impressionism, Cubism, Bauhaus) and Asian (Vietnamese Đông Hồ woodblock, Indonesian Batik, Thai mural painting, Chinese ink wash) |
+| **Photography & Composition** | Frame a shot on a virtual scene canvas; AI grades composition (rule of thirds, leading lines, negative space, depth); understand how photographers and cinematographers direct the eye |
+| **Calligraphy & Typography** | Practice Vietnamese calligraphy, Chinese brush stroke technique, Arabic script, and modern digital typography; AI scores stroke accuracy, proportion, and rhythm |
+
+**Curriculum alignment:** Vietnam (Mỹ thuật lớp 1–9) · Indonesia (Seni Budaya) · Thailand (Art) · Malaysia (Pendidikan Seni Visual) · Philippines (MAPEH — Arts strand) · Singapore (Art O-Level)
+
+---
+
+### Health & Well-being Education *(knowledge-based, non-physical)*
+
+> **Physical Education belongs on the field. Health knowledge belongs in every mind — and can be learned just as well online.**
+> This module covers the non-physical, knowledge-based dimensions of health education: the science and psychology that transforms a person's everyday decisions.
+
+| Simulation | Detail |
+|---|---|
+| **Nutrition Science Lab** | Build a day's meals on an interactive plate; AI calculates macros/micros and flags deficiencies; explore how vitamin deficiency, excess sugar, or iron shortage manifest as real symptoms |
+| **Human Body Systems Atlas** | Explore all 11 body systems (circulatory, digestive, nervous, immune, endocrine, etc.) in a zoomable interactive 3D model; trace how systems interact under stress, illness, and recovery |
+| **Disease & Immunity Simulator** | Animate how viruses and bacteria invade the body; watch the immune response (antibodies, T-cells, fever) play out in real time; simulate vaccine effect and herd immunity on a population graph |
+| **Mental Health Literacy** | Scenario-based interactive stories depicting anxiety, depression, grief, and stress responses; learner identifies symptoms; AI explains coping strategies and when to seek help — reduces stigma through understanding |
+| **Environmental Health** | Visualize how air quality, water contamination, noise pollution, and climate exposure affect human health outcomes; link to local SEA data (Hanoi AQI, Jakarta flooding, Manila heat index) |
+| **Puberty & Adolescent Health** | Medically accurate, age-gated, culturally sensitive content on puberty, body changes, consent, and healthy relationships; delivered with per-market cultural review |
+
+**Curriculum alignment:** Vietnam (Khoa học tự nhiên / Sinh học, GDTC-SK) · Indonesia (PJOK — health theory) · Thailand (Health & Physical Education — theory) · Malaysia (Pendidikan Kesihatan) · Philippines (MAPEH — Health strand) · Singapore (Health Education)
+
+---
+
 ### Scientific Discoveries Lab
 
 > **Learn how humanity discovered the world — by re-living the exact experiment.**
@@ -252,7 +399,7 @@ The flagship simulation. Every element and compound is rendered with physical re
 ### Reflex Training Arena
 
 > **The fastest muscles in your body are trained by your brain.**
-> Reflex training is backed by neuroscience: reaction time is a trainable cognitive skill, not fixed at birth. BeQuizzy's Reflex Arena trains four distinct reflex types — visual, auditory, tactile, and verbal — each with games calibrated to benchmark averages and adaptive difficulty.
+> Reflex training is backed by neuroscience: reaction time is a trainable cognitive skill, not fixed at birth. BeQuizzy's Reflex Arena trains **five distinct reflex types** — visual, auditory, hand speed, verbal speed, and cognitive — each with games calibrated to benchmark averages and adaptive difficulty.
 
 **The Science of Reaction Time:**
 - Visual simple reaction time: **~200–250ms** average (eye → brain → hand)
@@ -380,7 +527,7 @@ Each rank unlocks: new game modes, harder difficulty, leaderboard access, cosmet
 | **Weekly Active Learners (WAL)** | Retention signal — learning habits are built through regular engagement, not one-off sessions |
 | **Learning Sessions Completed per Learner per Week** | Depth of engagement — signals genuine learning behavior, not just logins |
 | **AI Tutor Satisfaction Score (ATSS)** | Quality of AI tutoring interactions — rated after each session |
-| **Tutor-to-Student Match Rate** | Marketplace health — % of students who successfully find and book a human tutor |
+| **Tutor-to-Student Connection Rate** | Teaching platform adoption — % of learners who successfully find and connect with a human tutor; and % of tutors who actively use BeQuizzy as their primary teaching workspace |
 | **AI Knowledge Set Licenses Purchased** | Monetization signal — validates the AI Knowledge Studio marketplace model |
 | **Monthly Recurring Revenue (MRR)** | Business health |
 
@@ -392,19 +539,19 @@ Each rank unlocks: new game modes, harder difficulty, leaderboard access, cosmet
 
 | Product | Focus | Target Age | Pricing | Weakness vs. BeQuizzy |
 |---|---|---|---|---|
-| **Growtrics.ai** | Math & Science (Singapore curriculum) | K-12 | ~$15–20/mo | Narrow subject scope (Math+Science only); Singapore-focused; no human tutor marketplace; no creator economy layer |
+| **Growtrics.ai** | Math & Science (Singapore curriculum) | K-12 | ~$15–20/mo | Narrow subject scope (Math+Science only); Singapore-focused; no live tutoring platform; no creator economy layer |
 | **Synthesis Tutor** | K-5 Math only | 5–11 | $29/mo or $119/yr | Extremely narrow (Math only); no adult learning; no marketplace; no language support |
 | **Photomath** | Math problem scanning & solving | 10–25 | Free / $69.99/yr | Passive answer-giving, not active tutoring; no other subjects; no human connection |
-| **Khanmigo (Khan Academy)** | Broad K-12 curriculum, AI assistant | 5–18 | Free / ~$4/mo | No human tutor marketplace; no AI avatar; limited adult use cases; no monetization for teachers |
+| **Khanmigo (Khan Academy)** | Broad K-12 curriculum, AI assistant | 5–18 | Free / ~$4/mo | No live tutoring platform; no AI Knowledge Studio; limited adult use cases; no monetization for teachers |
 | **Quizlet** | Flashcard-based study & test prep | 10–25 | Free / Plus | Tool-based, not a tutor; no live instruction; no teacher monetization |
-| **Brainly** | Homework help Q&A community | 10–20 | Free / Plus | Community answers, not personalized; no AI tutor; no human marketplace |
+| **Brainly** | Homework help Q&A community | 10–20 | Free / Plus | Community answers, not personalized; no AI tutor; no live tutoring platform |
 
 ### 1:1 Tutoring Marketplaces
 
 | Product | Focus | Scale | Pricing | Weakness vs. BeQuizzy |
 |---|---|---|---|---|
-| **Preply** | Languages + corporate training | 100,000+ tutors | Per lesson ($8–$80+/hr) | Language-only; no AI tutor as fallback; no creator AI avatar; no interactive learning tools |
-| **italki** | 150+ languages | 20,000+ teachers | Per lesson ($8+/hr) | Language-only; community-driven content but no AI tutoring; no AI avatar feature |
+| **Preply** | Languages + corporate training | 100,000+ tutors | Per lesson ($8–$80+/hr) | Language-only; no AI tutor as fallback; no AI Knowledge Studio; no interactive learning tools |
+| **italki** | 150+ languages | 20,000+ teachers | Per lesson ($8+/hr) | Language-only; community-driven content but no AI tutoring; no AI Knowledge Studio |
 | **Wyzant** | Multi-subject K-12 + test prep | Large US-focused | Per lesson ($35–$100+/hr) | No AI; US-only; no creator economy; expensive for SEA market |
 | **Superprof** | Multi-subject global | Millions of tutors | Per lesson | No AI; platform is a directory, not a true learning environment |
 
@@ -412,19 +559,19 @@ Each rank unlocks: new game modes, harder difficulty, leaderboard access, cosmet
 
 | Product | Focus | Scale | Pricing | Weakness vs. BeQuizzy |
 |---|---|---|---|---|
-| **Teachable** | Online course creation & coaching | 150,000+ schools | $0–$299/mo | Self-directed video courses only; no AI tutor; no live adaptive learning; no AI avatar |
+| **Teachable** | Online course creation & coaching | 150,000+ schools | $0–$299/mo | Self-directed video courses only; no AI tutor; no live adaptive learning; no AI Knowledge Studio |
 | **Thinkific** | Online course + community | 35,000+ businesses | Free–$149/mo | Asynchronous content; no AI tutoring interaction; no student-facing adaptive AI |
-| **Maven** | Cohort-based expert courses | Large | Revenue share | Focused on professionals; high ticket; no kids/school learning; no AI avatar |
+| **Maven** | Cohort-based expert courses | Large | Revenue share | Focused on professionals; high ticket; no kids/school learning; no AI Knowledge Studio |
 | **Udemy** | Course marketplace | 62M+ students | Revenue share | One-size-fits-all courses; no personalization; no adaptive AI tutor; no 1:1 human connection |
-| **Coursera** | University/professional certificates | Large | $399+/yr | Adult professionals only; no AI tutor interaction; no creator AI avatar; no K-12 |
+| **Coursera** | University/professional certificates | Large | $399+/yr | Adult professionals only; no AI tutor interaction; no AI Knowledge Studio; no K-12 |
 
 ### Language Learning Platforms
 
 | Product | Approach | Languages | Pricing | Weakness vs. BeQuizzy |
 |---|---|---|---|---|
 | **Duolingo** | Gamified self-study | 40+ languages | Free / $7/mo | Language-only; gamification ≠ real conversational fluency; no human tutor; no creator economy |
-| **Babbel** | Structured lessons | 14 languages | ~$7/mo | Language-only; no AI tutor; no human marketplace; limited interactivity |
-| **Busuu** | Lessons + native speaker feedback | 12 languages | ~$10/mo | Language-only; feedback is community-based; no AI avatar |
+| **Babbel** | Structured lessons | 14 languages | ~$7/mo | Language-only; no AI tutor; no live tutoring platform; limited interactivity |
+| **Busuu** | Lessons + native speaker feedback | 12 languages | ~$10/mo | Language-only; feedback is community-based; no AI Knowledge Studio |
 
 ### Local & Regional Products (Vietnam)
 
@@ -466,7 +613,7 @@ Duolingo/Khan ─►
                                                          [BeQuizzy + AI Knowledge Studio]
 ```
 
-**BeQuizzy's unique intersection:** Broadest subject coverage + Adaptive AI Tutor + Human Tutor Marketplace + AI Knowledge Studio (structured knowledge economy) — all in one platform.
+**BeQuizzy's unique intersection:** Broadest subject coverage + Adaptive AI Tutor (Agentic RAG) + Teaching Platform for Tutors + BeQuizzy Marketplace (AI Knowledge economy) — all in one platform.
 
 ---
 
@@ -485,7 +632,10 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 
 | Feature | 🔑 | ⚔️ | 💰 | 🔒 | Free | Pro | Tutor Pro | Academy |
 |---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-| Interactive Simulation Engine (Chemistry, Physics, Biology, Math) | ✓ | ✓ | | | Limited | Full | ✓ | ✓ |
+| Interactive Simulation Engine — Sciences (Chemistry, Physics, Biology) | ✓ | ✓ | | | Limited | Full | ✓ | ✓ |
+| Interactive Simulation Engine — Math & Programming | ✓ | ✓ | | | Limited | Full | ✓ | ✓ |
+| Interactive Simulation Engine — Humanities (History, Geography, Civics, Literature) | ✓ | ✓ | | | Limited | Full | ✓ | ✓ |
+| Interactive Simulation Engine — Arts, Health, Economics | | ✓ | ✓ | | ✗ | ✓ | ✓ | ✓ |
 | Scientific Discoveries Lab | | ✓ | | | 3 scenarios | All | ✓ | ✓ |
 | Reflex Training Arena (5 types) | | ✓ | | ✓ | 2 types | All 5 | ✓ | ✓ |
 | AI Personal Tutor (conversational) | ✓ | | | | 5/month | Unlimited | ✓ | ✓ |
@@ -493,8 +643,7 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 | Spaced Repetition Engine | ✓ | | | ✓ | ✓ | ✓ | ✓ | ✓ |
 | Learning Record (full history) | ✓ | | | ✓ | 30 days | Unlimited | ✓ | ✓ |
 | Streak & Gamification System | ✓ | | | ✓ | ✓ | Enhanced | ✓ | ✓ |
-| Human Tutor Marketplace | ✓ | | | | ✓ | ✓ | ✓ | ✓ |
-| Virtual Classroom (1:1) | ✓ | | | | ✓ | ✓ | ✓ | ✓ |
+| Tutor Teaching Platform (workspace, scheduling, virtual classroom) | ✓ | | | | ✓ | ✓ | ✓ | ✓ |
 | Parent Dashboard | | | ✓ | ✓ | Basic | Full weekly reports | ✓ | ✓ |
 | Exam Prep Mode (IELTS/SAT/GMAT/GRE) | | | ✓ | | Preview | Full | ✓ | ✓ |
 | Language Conversation Mode + Pronunciation AI | | ✓ | ✓ | | ✗ | ✓ | ✓ | ✓ |
@@ -512,6 +661,18 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 | White-Label Portal | | | ✓ | | ✗ | ✗ | ✗ | Custom |
 | Corporate Language Training (B2B) | | | ✓ | | ✗ | ✗ | ✗ | Custom |
 | API & Integrations (Google Classroom, Zapier) | | | ✓ | | ✗ | ✗ | ✗ | ✓ |
+| **Assessment Engine** — 14 question types (MCQ, essay, code, audio, hotspot…) | ✓ | | | | Basic (3 types) | All 14 types | ✓ | ✓ |
+| **Assessment Engine** — Code Execution Sandbox (25+ languages) | | ✓ | ✓ | | ✗ | ✓ | ✓ | ✓ |
+| **Assessment Engine** — AI Essay & Audio Grader | | ✓ | ✓ | | ✗ | ✓ | ✓ | ✓ |
+| **Assessment Engine** — Anti-Cheat & Proctoring | | ✓ | ✓ | | Basic | Standard | Full | Full |
+| **Assessment Engine** — Item Analytics & Mastery Detection | | | ✓ | ✓ | ✗ | Basic | Full | Full |
+| **Assessment Engine** — Verifiable Certification | | | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ |
+| **Smart Schedule** — Learner Calendar & Daily Plan | ✓ | | | ✓ | Basic | Full | ✓ | ✓ |
+| **Smart Schedule** — Goal Wizard & Mastery Map | | | ✓ | ✓ | ✗ | ✓ | ✓ | ✓ |
+| **Smart Schedule** — Tutor Curriculum Planner | | | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ |
+| **Smart Schedule** — Grade Book & Progress Alerts | | | ✓ | ✓ | ✗ | ✗ | ✓ | ✓ |
+| **Smart Schedule** — Q&A Discussion Board | ✓ | | | ✓ | ✗ | ✓ | ✓ | ✓ |
+| **Smart Schedule** — iCal / Google Calendar Sync | ✓ | | | ✓ | ✗ | ✓ | ✓ | ✓ |
 
 ---
 
@@ -530,23 +691,260 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 | **Language Immersion Scenes** | Learner placed in real-world scenes (market, café, airport); AI characters respond in target language | Language learned in context, not in a vacuum |
 | **Typing & Morse Code Trainer** | Animated hand overlay, WPM tracking, Morse decoder, Vietnamese Telex/VNI | Universal foundational skill; low friction first engagement |
 
-#### AI Personal Tutor (Free: 5 sessions/month)
+#### AI Personal Tutor — Dynamic Agentic RAG Architecture
+
+> **BeQuizzy không học về "doanh nghiệp/SME" của người dùng như một sales AI. BeQuizzy học về từng learner — thông qua từng hành vi học — để chọn đúng cách giải thích phù hợp nhất cho người đó, ở chủ đề đó, lúc đó. Và quan trọng hơn tất cả: đảm bảo kiến thức được nhớ lâu, không phải chỉ hiểu một lần rồi quên.**
+
+**Free: 5 sessions/month → Pro: Unlimited**
+
+---
+
+##### Triết lý thiết kế: 3 tầng cốt lõi
+
+```
+Tầng 1 — HIỂU LEARNER:
+  Không dựa vào profile tĩnh.
+  AI quan sát hành vi học liên tục → xây dựng mô hình động về learner.
+  "Learner này hiểu tốt nhất khi dùng ví dụ thực tế trước rồi mới trừu tượng hóa."
+  "Learner này hay nhầm lẫn giữa điện thế và cường độ dòng điện vì lý do cụ thể X."
+
+Tầng 2 — CHỌN CÁCH GIẢI THÍCH:
+  Mỗi khái niệm có 6–8 cách giải thích khác nhau (phong cách, độ sâu, ngôn ngữ).
+  AI chọn variant dựa trên Learner Model: cái gì đã hiệu quả trước đây?
+  Nếu variant đầu không hiệu quả → thử variant khác ngay trong session.
+
+Tầng 3 — ĐẢM BẢO NHỚ LÂU:
+  Hiểu một lần ≠ nhớ lâu. Đây là vấn đề lớn nhất trong giáo dục.
+  Retention System chủ động kéo kiến thức ra khỏi trí nhớ đúng lúc quên.
+  "Bạn học phản ứng axit-bazơ 8 ngày trước — thử nhớ lại trước khi đọc lại nhé."
+```
+
+---
+
+##### System Architecture
+
+```
+Learner input (text / voice / simulation action / quiz answer)
+        │
+        ▼
+┌──────────────────────────────────────────────────────────┐
+│           Supervisor / Planner Layer (LangGraph)          │
+│  • Intent: EXPLAIN / QUESTION / PRACTICE /               │
+│            ASSESS / GUIDE / MOTIVATE /                   │
+│            PATH / EXAM_PREP / RECALL_TRIGGER             │
+│  • Subject & topic detection                              │
+│  • Learner state detection:                               │
+│    (struggling / confident / bored /                     │
+│     time-pressured / exam-approaching /                  │
+│     forgetting-curve-due)                                │
+│  • Selects explanation variant from Learner Model        │
+│  • Routes to appropriate Sub-Agent(s)                    │
+└────────────────────────┬─────────────────────────────────┘
+                         │ parallel retrieval
+         ┌───────────────┴────────────────┐
+         ▼                                ▼
+  Curriculum Tools                 Learner Model Tools
+  (subject knowledge)              (this specific learner)
+  • subject_curriculum             • learner_model
+  • concept_library                  (dynamic behavioral model)
+    [6–8 variants per concept]     • explanation_log
+  • misconception_handler            (which variants worked)
+  • exam_playbook                  • session_history
+  • discovery_scenarios            • mastery_map
+  • knowledge_set                  • retention_map
+    [if license purchased]           (decay curves per topic)
+                                   • spaced_repetition_queue
+                                   • assignment_context
+                                   • simulation_state
+         │                                │
+         └───────────────┬────────────────┘
+                         ▼
+               Action Sub-Agents
+  (each runs Draft → Self-Critique → Revise loop)
+  • ExplainerAgent          — selects + delivers explanation variant
+  • SocraticQuestionerAgent — asks the question that triggers discovery
+  • PracticeGeneratorAgent  — generates problems with progressive hints
+  • FeedbackAgent           — diagnoses root misconception, not just "wrong"
+  • PathAdvisorAgent        — next-step recommendation based on mastery map
+  • SimulationGuideAgent    — narrates simulation actions in real time
+  • ExamCoachAgent          — IELTS/SAT/THPT strategy + timed mock feedback
+  • RecallAgent             — generates retrieval prompts at optimal intervals
+                         │
+                         ▼
+            ┌────────────────────────┐
+            │    Pedagogy Gate       │
+            │  (independent judge)   │
+            │  • Curriculum aligned? │
+            │  • Factually correct?  │
+            │  • Socratic integrity? │
+            │    (not giving answers │
+            │     too directly)      │
+            │  • Right difficulty?   │
+            │  • Age-appropriate?    │
+            │  • COPPA compliant?    │
+            └────────────┬───────────┘
+                         │
+               Pass → Return to learner
+               Fail → Retry (up to 3×)
+               Fail 3× → Best attempt + flag for tutor review
+
+── BACKGROUND PROCESSES (always running) ──────────────────
+  Learner Model Builder  — updates learner_model after every interaction
+  Retention Scheduler    — queues recall prompts at forgetting-curve peaks
+  Mastery Tracker        — updates mastery_map as evidence accumulates
+───────────────────────────────────────────────────────────
+```
+
+---
+
+##### Tầng 1 — Learner Model: Hiểu Learner Qua Hành Vi
+
+> Không phải bảng câu hỏi điền form. BeQuizzy quan sát những gì learner làm và xây dựng mô hình động từ hành vi thực.
+
+| Signal quan sát | Ý nghĩa với AI |
+|---|---|
+| **Đường đi trong simulation** | Learner thử gì trước? Họ thoát ra ở bước nào? Điểm dừng = điểm khó |
+| **Câu trả lời sai cụ thể** | Không chỉ "sai" mà "sai theo cách nào" — chọn đáp án B thay vì C cho thấy nhầm lẫn cụ thể gì |
+| **Thời gian trên từng khái niệm** | Đọc nhanh = tự tin hoặc bỏ qua; đọc lại nhiều lần = đang cố hiểu |
+| **Từ nào họ hỏi nghĩa** | Từ vựng nào còn thiếu — giúp AI điều chỉnh ngôn ngữ giải thích |
+| **Hiệu quả của từng explanation variant** | Sau khi dùng cách giải thích "ví dụ thực tế" → learner trả lời đúng ngay lần sau? |
+| **Tốc độ phản hồi trong Reflex Arena** | Working memory capacity — ảnh hưởng đến lượng thông tin AI đưa mỗi lần |
+| **Pattern code-switching ngôn ngữ** | Khi nào learner tự nhiên chuyển sang tiếng Anh? Khi nào tiếng Việt thoải mái hơn? |
+| **Tham gia peer group** | Câu hỏi trong group = điểm yếu thực sự; câu trả lời trong group = điểm mạnh cần consolidate |
+
+Kết quả: sau ~10 sessions, AI có model đủ cụ thể để nói: *"Learner này hiểu tốt nhất qua analogies với thứ gì đó hữu hình, cần ví dụ cụ thể trước rồi mới trừu tượng, hay nhầm lẫn về chiều dòng điện, làm tốt nhất lúc 8–10 tối, tiếng Việt mặc định trừ khi hỏi về thuật ngữ kỹ thuật."*
+
+---
+
+##### Tầng 2 — Explanation Engine: Đúng Cách Giải Thích Cho Đúng Người
+
+> Mỗi khái niệm không có một cách giải thích. Mỗi khái niệm có nhiều cách — AI chọn cái phù hợp nhất với learner này, lúc này.
+
+**6 loại explanation variant trong concept_library:**
+
+| Variant | Mô tả | Phù hợp với learner |
+|---|---|---|
+| **Analogy** | So sánh với thứ learner đã biết ("Điện thế giống như áp lực nước trong ống") | Người học thiên về liên tưởng; học tốt qua so sánh |
+| **Story / Narrative** | Nhúng khái niệm vào câu chuyện thực tế có nhân vật và context | Trẻ nhỏ; người học thiên về ngữ cảnh; tất cả khi muốn tạo ký ức cảm xúc |
+| **Step-by-step procedural** | Hướng dẫn từng bước làm gì, không giải thích tại sao trước | Người cần kết quả nhanh; học sinh cần làm bài thi trước, hiểu sâu sau |
+| **First principles** | Xây từ nền tảng ("Tại sao 2+2=4? Vì số là ký hiệu đại diện cho lượng...") | Learner muốn hiểu sâu gốc rễ; người học triết học, toán, lý |
+| **Concrete → Abstract** | Ví dụ thực tế rõ ràng trước → rút ra quy tắc chung sau | Học sinh cụ thể hóa tốt hơn trừu tượng hóa trực tiếp |
+| **Visual description** | Mô tả bức tranh/sơ đồ bằng lời (hoặc chỉ vào simulation) | Learner có spatial/visual thinking mạnh |
+
+**Quy trình chọn variant:**
+
+```
+Bước 1: Tra cứu explanation_log — variant nào đã thử? Kết quả thế nào?
+Bước 2: Tra learner_model — learning style ưu thế là gì?
+Bước 3: Xem xét topic — chủ đề này phù hợp với variant nào nhất?
+Bước 4: Chọn variant cao điểm nhất → ExplainerAgent soạn
+Bước 5: Nếu learner không hiểu sau lần đầu → thử variant khác ngay trong session
+Bước 6: Ghi lại hiệu quả vào explanation_log để lần sau dùng lại
+```
+
+---
+
+##### Tầng 3 — Long-Term Retention System (Quan Trọng Nhất)
+
+> **Hiểu một lần ≠ nhớ lâu.** Đường cong quên lãng Ebbinghaus chỉ ra: không được nhắc lại đúng lúc, 80% kiến thức mới học biến mất trong 30 ngày. BeQuizzy giải quyết đây bằng một hệ thống retention chủ động.
+
+**Nguyên lý khoa học:**
+
+```
+Forgetting Curve (Ebbinghaus):
+  Sau 1 ngày:  mất ~40% nếu không ôn
+  Sau 7 ngày:  mất ~65%
+  Sau 30 ngày: mất ~80%
+  
+Spaced Repetition (giải pháp):
+  Ôn lại đúng lúc SAP quên → đường cong dần phẳng hơn
+  Lần 1 → ôn lại sau 1 ngày → lần 2 sau 3 ngày → lần 3 sau 7 ngày...
+  Sau 5–6 lần ôn đúng chu kỳ: kiến thức vào long-term memory
+
+Testing Effect (tăng cường hơn nữa):
+  Chủ động recall (nhớ lại) > đọc lại (passive review) × 2–4 lần
+  Ngay cả fail recall vẫn giúp nhớ lâu hơn đọc lại thụ động
+```
+
+**Cơ chế retention của BeQuizzy:**
+
+| Cơ chế | Cách hoạt động | Khi nào kích hoạt |
+|---|---|---|
+| **Spaced Repetition Queue** | `retention_map` lưu lần cuối học + performance score per topic; `Retention Scheduler` tính thời điểm optimal để review | Background process, luôn chạy |
+| **Retrieval-Before-Review** | Khi session mở ra một topic đã học: AI hỏi "Bạn nhớ gì về X không?" → đợi learner trả lời → rồi mới giải thích lại | Mỗi khi learner trở lại topic cũ |
+| **Micro-Quiz Reminders** | Push notification tới app: "3 câu hỏi nhỏ về Định luật Ohm — 2 phút thôi" — xuất hiện đúng lúc forgetting curve đang dốc | 1 ngày / 3 ngày / 7 ngày sau khi học lần đầu |
+| **Daily Review Card** | Mỗi sáng: card hiển thị 3–5 items due for recall từ `spaced_repetition_queue` — có thể trả lời ngay mà không cần mở full session | Mỗi ngày khi mở app |
+| **Interleaved Practice** | Khi luyện tập chủ đề mới, AI xen kẽ câu hỏi từ các chủ đề đã học trước — không chỉ drill cùng một topic | Trong mọi practice session |
+| **Elaborative Interrogation** | AI hỏi "Tại sao điều này đúng?" thay vì chỉ xác nhận đáp án — buộc learner kết nối khái niệm với kiến thức nền | Sau khi learner trả lời đúng |
+| **Contextual Re-encountering** | Khi học topic mới có liên quan, AI tự nhiên dẫn về topic cũ: "Điều này nhắc bạn nhớ gì về phản ứng oxi hóa-khử không?" | Khi curriculum map phát hiện liên kết |
+| **Simulation Recall Mode** | Mở lại một simulation đã làm trước đây, nhưng thêm biến mới — learner phải áp dụng kiến thức đã học vào tình huống khác | Trong review sessions |
+
+**Retention Map — Lưu Trữ Tình Trạng Từng Khái Niệm:**
+
+```
+retention_map[topic] = {
+  last_learned:      "2026-06-20",
+  last_recalled:     "2026-06-23",
+  recall_success_rate: 0.75,        // 3/4 lần recall thành công
+  forgetting_curve_stage: 3,        // cần ôn lại sau 7 ngày
+  next_review_due:   "2026-06-30",  // hôm nay!
+  explanation_variant_used: "analogy",
+  misconception_resolved: false     // còn nhầm về chiều dòng điện
+}
+```
+
+**Progression từ Short-term → Long-term Memory:**
+
+```
+Lần 1 (học mới):      Hiểu trong session → vào working memory
+Recall 1 (sau 1 ngày): Micro-quiz 2 phút → strengthen trace
+Recall 2 (sau 3 ngày): Daily Review Card → reinforce
+Recall 3 (sau 7 ngày): Interleaved question trong session mới → generalize
+Recall 4 (sau 14 ngày): Simulation recall mode → apply to new context
+Recall 5 (sau 30 ngày): Elaborative interrogation → connect to wider network
+────────────────────────────────────────────────────────────
+Kết quả: kiến thức vào long-term memory, khó quên ngay cả khi bỏ học 3 tháng
+```
+
+---
+
+##### Sub-Agent Self-Critique Loop
+
+Mỗi Sub-Agent chạy loop — không generate một lần và xong:
+
+1. **Draft** — tạo response ban đầu từ context đã retrieve
+2. **Self-Critique** — phù hợp với level learner? Đúng Socratic principles? Dùng đúng explanation variant không?
+3. **Revise** — cải thiện dựa trên critique
+4. **Emit với confidence score** (0–1)
+
+Confidence < 0.7 → Pedagogy Gate reject → retry.
+
+---
+
+##### Core Capabilities
+
+| Capability | Cách hoạt động | Tại sao quan trọng |
+|---|---|---|
+| **Socratic Questioning** | Không bao giờ cho đáp án thẳng; hỏi câu đúng để learner tự khám phá | Discovery-based retention: nhớ lâu hơn 2–4× so với được nói thẳng |
+| **Adaptive Explanation** | 3 đúng liên tiếp → tăng độ khó; 2 sai liên tiếp → thử variant giải thích khác | Tránh boredom và tránh discouragement cùng lúc |
+| **Simulation-Aware** | AI quan sát action learner làm trong simulation và phản hồi real-time | Đóng vòng lặp giữa doing và understanding ngay tức thì |
+| **Voice + Text** | Nói hoặc gõ; AI transcribes và phản hồi tương ứng | Giảm friction cho học sinh nhỏ tuổi và mobile users |
+| **Multilingual** | Tiếng Việt, tiếng Anh, bilingual mode; tự động switch theo learner | SEA learners thường code-switch; AI cũng vậy |
+| **Session Summary** | Sau mỗi session: đã học gì, đã master gì, cần ôn gì, session tiếp theo nên làm gì | Learner và phụ huynh luôn biết learner đang ở đâu |
+| **Safe Content Mode** | COPPA-compliant content filtering cho under-13 | Bắt buộc để được phụ huynh tin tưởng |
+
+
+
+
+#### Tutor Teaching Platform
 
 | Feature | What It Does | Why It's Core |
 |---|---|---|
-| **Conversational AI Tutor** | Socratic method — asks questions, guides thinking, never just gives answers; voice + text input | Replaces the "answer machine" with a real thinking partner |
-| **Subject Breadth** | Math, Science (Physics, Chemistry, Biology), English, Chinese, Vietnamese at launch | Broad enough to be the single app for a student's entire school life |
-| **Session Progress Summary** | After each session: what was covered, mastered, and needs review | Closes the loop — learner always knows where they stand |
-| **Safe Content Mode** | COPPA-compliant content filtering for under-13 | Non-negotiable for family trust and parent adoption |
-
-#### Human Tutor Marketplace
-
-| Feature | What It Does | Why It's Core |
-|---|---|---|
-| **Tutor Profile & Matching** | Filter by subject, language, price, availability, teaching style | Demand-side value proposition for the marketplace to function |
-| **1:1 Booking System** | Instant booking or tutor-approval flow; calendar sync | Without easy booking, the marketplace doesn't convert |
-| **Virtual Classroom** | Video call, screen share, interactive whiteboard embedded | Session must happen *inside* BeQuizzy — not Zoom — to capture session data and build the learning record |
-| **Tutor Wallet & Payout** | Weekly payouts; MoMo, VNPay, payOS, Stripe | Supply side (tutors) won't join if payment is unreliable |
+| **Tutor Workspace & Profile** | Tutor sets up their professional profile (subjects, experience, qualifications, video intro); profile is shared with their own students — not publicly listed in a price-comparison directory | Tutors need a professional home inside BeQuizzy, not a stall in a marketplace |
+| **Student Connection Flow** | Tutors invite students via private link or QR code; students can also find a tutor through in-app search (by subject and location) but the relationship is initiated and controlled by the tutor | Keeps the dynamic professional: gia sư manages their own student roster, not a crowd |
+| **1:1 & Group Class Scheduling** | Tutor creates sessions (1:1 or group), sets availability, students book into open slots; calendar syncs with iCal/Google Calendar | Without frictionless scheduling, tutors revert to WhatsApp back-and-forth |
+| **Virtual Classroom** | Video call, screen share, interactive whiteboard, and all BeQuizzy simulation tools available live in session — inside BeQuizzy, not Zoom | Session happens inside BeQuizzy to capture data, build the learning record, and keep the relationship on-platform |
+| **Tutor Wallet & Payout** | Weekly automated payouts; MoMo, VNPay, payOS, Stripe; tutor sets their own rates | Tutors won't adopt a new platform if payment is unreliable or opaque |
 
 #### Core Platform
 
@@ -567,13 +965,14 @@ Every feature in BeQuizzy serves one of four strategic purposes. Understanding t
 
 | Moat Feature | Why Competitors Can't Easily Replicate |
 |---|---|
-| **Interactive Simulation Engine** (full breadth) | Chemistry + Physics + Biology + Math + Language + Music + Reflex all as live simulations requires enormous engineering investment. Competitors (Duolingo, Khan Academy, Synthesis) each have 1–2 simulations. BeQuizzy will have 20+. |
+| **Dynamic Agentic RAG Tutor** | Multi-agent architecture with Supervisor/Planner, 7 Knowledge Tools (RAG retrievers), 7 Context Tools (live learner data), and 8 Action Sub-Agents each running a self-critique loop — topped by a Pedagogy Gate. Competitors (Duolingo, Khan Academy, Khanmigo) use a single LLM with a system prompt. BeQuizzy's architecture deepens with every session the learner takes — the context tools accumulate irreplaceable personal history. |
+| **Interactive Simulation Engine** (full breadth) | Chemistry + Physics + Biology + Math + History + Geography + Literature + Civics + Computer Science + Economics + Music + Visual Arts + Health + Language + Reflex as live simulations requires enormous engineering investment. Competitors (Duolingo, Khan Academy, Synthesis) each cover 1–3 simulation domains. BeQuizzy covers every major subject in the SEA K-12 curriculum (excluding physical education) — 30+ simulation modules at full launch. |
 | **Scientific Discoveries Lab** | Requires curation of primary-source papers + interactive experiment design per discovery. Not a template — each scenario is hand-crafted. Grows into a library that compounds as a moat. |
 | **Reflex Training Arena** | Nobody else pairs cognitive reflex training (visual/auditory/hand/verbal/cognitive) with academic subject learning. The cross-skill insight (ear training → tonal language fluency) is a unique positioning. |
-| **AI Knowledge Studio** | Network effect: more tutors build Knowledge Sets → richer marketplace → more learner demand → more tutors want to join. The tutor's entire knowledge contribution (curriculum, Q&A, teaching logic) is stored on BeQuizzy — they lose all of it if they leave. First mover in structured edu-knowledge packaging for AI. |
+| **AI Knowledge Studio** | Network effect: more tutors build Knowledge Sets → richer BeQuizzy Marketplace → more learner demand → more tutors want to join. The tutor's entire knowledge contribution (curriculum, Q&A, teaching logic) is stored on BeQuizzy — they lose all of it if they leave. First mover in structured edu-knowledge packaging for AI. |
 | **Language Conversation Mode + Pronunciation AI** | Real-time phoneme-level pronunciation feedback requires specialized ASR models trained per language. Competitors (Duolingo) have this for a few languages. BeQuizzy targets SEA languages (Vietnamese, Thai, Bahasa, Tagalog) that others ignore. |
 
-#### How the AI Knowledge Studio Works (Inspired by RevLooper's AI Employee Model)
+#### How the AI Knowledge Studio Works
 
 > A tutor's Knowledge Set is **not** a personality clone. It is a structured, subject-complete knowledge architecture — built contribution by contribution — that the AI uses to teach students systematically.
 
@@ -597,7 +996,7 @@ TUTOR BUILDS KNOWLEDGE SET:
   → Preview as student → Publish to marketplace → Set license price
 
 STUDENT ACCESSES:
-  Browse marketplace → preview (3 free interactions)
+  Browse **BeQuizzy Marketplace** → preview (3 free interactions)
   → Purchase license (monthly or lifetime)
   → AI teaches using tutor's full knowledge system
   → Combined with BeQuizzy's simulation engine (e.g., IELTS AI uses Speaking Simulator)
@@ -628,9 +1027,9 @@ STUDENT ACCESSES:
 | **AI Knowledge Studio** | Academy plan only | Tutor builds complete Knowledge Set subject by subject (curriculum map → explanations → Q&A bank → teaching logic → assessments) → published on marketplace as a licensable AI teaching product |
 | **AI Knowledge Marketplace** | Free preview · Purchase per license | Browse, preview (3 free interactions), purchase monthly or lifetime license; tutor earns 70% of license revenue |
 | **Language Conversation Mode** | Learner Pro | Immersive AI role-play scenes; real-time waveform pronunciation comparison; phoneme-level scoring |
-| **Extended Simulations** | Learner Pro | Cosmology/astronomy, music studio (piano/guitar), creative arts feedback, life skills (budget/first aid/cooking), body language reader |
+| **Extended Simulations** | Learner Pro | Music Studio (piano/guitar/drums), Cosmology & Astronomy Explorer — complementing the dedicated subject simulation modules |
 | **AI Music Tutor** | Learner Pro | AI listens via microphone; feedback on pitch, timing, posture; works with piano, guitar, drums |
-| **Creative Arts Module** | Learner Pro | Upload artwork; AI structured feedback; drawing → graffiti → calligraphy progression |
+| **Visual Arts & Design Studio** | Learner Pro | Full drawing, color theory, design thinking, art history gallery, photography composition, calligraphy — now its own dedicated simulation module; see Section 1.5 |
 
 ---
 
@@ -743,14 +1142,361 @@ Gamification in BeQuizzy is not surface-level (badges for logging in). It mirror
 
 ---
 
-### 5.6 — Out of Scope
+### 5.6 — 📝 Assessment & Testing Engine
+
+> **Inspired by Codility, HackerRank, and Google Forms — but built for every subject, every age, and every type of knowledge.**
+> BeQuizzy's Assessment Engine is a first-class, exam-grade testing platform embedded natively in the learning experience. Tutors use it to evaluate students. The platform uses it to gate mastery progression. Students use it to self-assess and earn credentials. All results feed directly into the Learning Record and the AI's adaptive model.
+
+#### Design Philosophy
+
+```
+CODILITY / HACKERRANK MODEL (inspiration):
+  Code-only → execution-based → hiring context → corporate
+
+BEQUIZZY ASSESSMENT ENGINE (adaptation):
+  All subjects → multi-modal → learning context → K-12 to adult
+  Code tests + MCQ + essay + audio + simulation-linked → one unified engine
+  Anti-cheat without surveillance culture — proportional to stakes
+```
+
+---
+
+#### 5.6.1 — Question Types
+
+BeQuizzy supports 14 question types, covering every form of knowledge expression from rote recall to creative synthesis:
+
+| # | Question Type | Description | Auto-Graded |
+|---|---|---|:---:|
+| 1 | **Multiple Choice (MCQ)** | Single correct answer from 2–8 options; image or text options | ✓ |
+| 2 | **Multiple Select** | One or more correct answers; partial scoring supported | ✓ |
+| 3 | **True / False** | Binary assertion; can chain into multi-statement sequences | ✓ |
+| 4 | **Fill in the Blank** | One or more blanks in a sentence; accepts synonym list; case-insensitive option | ✓ |
+| 5 | **Matching Pairs** | Drag left column items to match right column items; supports image-to-text, text-to-text | ✓ |
+| 6 | **Ordering / Ranking** | Drag items into correct sequence (steps, timeline events, priority order) | ✓ |
+| 7 | **Hotspot** | Click on the correct region(s) in an image (e.g., label a cell organelle, identify a map location, mark a circuit fault) | ✓ |
+| 8 | **Short Answer** | 1–3 sentence response; AI-assisted grading with teacher override | ⚠️ AI + human |
+| 9 | **Essay / Long Form** | Structured written response; AI scores against rubric dimensions (thesis, evidence, coherence, grammar); teacher can override | ⚠️ AI + human |
+| 10 | **Code Execution** | Write and run code in 25+ languages; test cases validate output; AI detects logical errors beyond pass/fail | ✓ |
+| 11 | **Audio Response** | Learner records spoken answer (language pronunciation, oral history, debate argument); AI transcribes and scores against rubric | ⚠️ AI + human |
+| 12 | **Simulation-Linked** | Test embedded in a simulation (e.g., "mix these chemicals — which reaction occurs?"); answer derived from simulation state | ✓ |
+| 13 | **Drag & Drop Labeling** | Drag labels onto a diagram (anatomy, geography maps, chemistry diagrams, circuit schematics) | ✓ |
+| 14 | **Agreement Scale** | Likert-scale survey questions for self-reflection, learning style assessment, or course feedback | ✓ |
+
+---
+
+#### 5.6.2 — Test Builder
+
+| Feature | Detail |
+|---|---|
+| **Drag-and-Drop Test Constructor** | Assemble questions from the question bank or write new ones inline; drag to reorder; group into sections (e.g., Part A: MCQ 20 pts · Part B: Essay 30 pts) |
+| **Question Bank Library** | Centralized bank per tutor and per subject; tag each question by topic, difficulty (Easy/Medium/Hard), Bloom's Taxonomy level (Remember → Create), and learning objective |
+| **AI Question Generator** | Describe a topic and target difficulty → AI proposes draft questions in any supported type; tutor reviews and approves before adding to bank |
+| **Random Question Pool** | Set a pool of 20 questions; system randomly selects 10 per student → every test is unique; configure pool per section |
+| **Question Version History** | Track edits to questions; see which version was used in which test; revert if needed |
+| **Import / Export** | Import questions from CSV or formatted DOCX; export test as PDF for offline use or print |
+| **Section Configuration** | Set per-section time limits, instructions, point weights, and navigation rules (can student go back?) |
+| **Prerequisite Lock** | A test can only be unlocked after the learner completes a prior module or achieves a minimum score on a prior test |
+
+---
+
+#### 5.6.3 — Test Settings & Delivery
+
+| Setting | Options |
+|---|---|
+| **Timing** | Untimed · Fixed countdown (per test) · Per-question countdown · Flexible (total time distributed across questions by student) |
+| **Attempt Policy** | 1 attempt · N attempts · Unlimited · Best score / Last score / Average score counted |
+| **Window** | Available always · Open from date/time X to date/time Y · Rolling window (start anytime, complete within N hours) |
+| **Question Order** | Fixed · Randomized per student · Randomized within sections |
+| **Answer Order** | Fixed · Randomized (MCQ/Multiple Select options shuffled) |
+| **Result Visibility** | Show score immediately · Show after all students submit · Show only after manual review · Never show (blind assessment) |
+| **Partial Scoring** | On/Off for Multiple Select and Code questions |
+| **Calculator / Tools** | Enable/disable on-screen calculator, ruler, periodic table, or formula sheet per test |
+| **Accessibility** | Extended time mode for learners with flagged accessibility needs; font size override; screen reader compatible |
+
+---
+
+#### 5.6.4 — Code Execution Sandbox
+
+> **Inspired by Codility and HackerRank — generalized for BeQuizzy's Computer Science module and any subject involving logical reasoning.**
+
+| Feature | Detail |
+|---|---|
+| **Language Support** | Python, JavaScript, TypeScript, Java, C, C++, C#, Go, Ruby, Rust, PHP, Swift, Kotlin, R, SQL, HTML/CSS, Bash — 25+ languages at launch |
+| **In-Browser IDE** | Syntax highlighting, auto-indentation, line numbers, basic autocomplete; no install required |
+| **Test Case Runner** | Tutor defines N test cases (hidden from student); student's code is executed against all; pass/fail per case displayed; final score = cases passed / total cases |
+| **Custom Test Cases** | Student can write and run own test cases during the attempt (visible only to them) before final submission |
+| **Execution Limits** | Configurable per question: CPU time limit (1s–30s), memory limit (64MB–512MB) |
+| **Error Display** | Runtime errors, compile errors, and timeout messages shown verbatim; AI explains the error in plain language on request |
+| **Code Review Scoring** | Beyond pass/fail: AI assesses code readability, efficiency (Big-O estimation), use of appropriate patterns; optional tutor rubric override |
+| **SQL Mode** | Full SQL sandbox with pre-seeded database schema; queries execute against the schema; results compared to expected output |
+
+---
+
+#### 5.6.5 — Anti-Cheat & Academic Integrity
+
+> **Proportional to stakes — lightweight monitoring for practice, robust proctoring for certification-level exams.**
+
+| Mechanism | Practice Tests | Graded Assignments | Certification Exams |
+|---|:---:|:---:|:---:|
+| **Attempt time tracking** | ✓ | ✓ | ✓ |
+| **Tab / window focus loss alert** | — | ✓ | ✓ |
+| **Copy-paste from external source detection** | — | ✓ | ✓ |
+| **Browser lockdown mode** (can't open other tabs) | — | Optional | ✓ |
+| **AI-generated content detection** | — | ✓ | ✓ |
+| **Plagiarism check** (against previous submissions in the platform) | — | ✓ | ✓ |
+| **Code similarity detection** across submissions | — | ✓ | ✓ |
+| **Webcam proctoring (opt-in)** | — | — | Optional |
+| **IP consistency check** (flag if IP changes mid-test) | — | — | ✓ |
+| **VPN/Proxy detection** | — | — | ✓ |
+| **Randomized question pools** | — | ✓ | ✓ |
+| **Randomized answer order** | ✓ | ✓ | ✓ |
+
+> **Privacy note:** Webcam proctoring is opt-in only, requires explicit learner consent before the exam begins, and video is processed locally (face presence detection only — no recording stored unless flagged event occurs). COPPA-compliant: no webcam proctoring for learners under 13.
+
+---
+
+#### 5.6.6 — Auto-Grading & AI Scoring
+
+| Feature | Detail |
+|---|---|
+| **Instant Auto-Grading** | Objective question types graded at submission; score and feedback available immediately |
+| **AI Essay Scorer** | Evaluates essay responses against a configurable rubric (up to 6 dimensions: e.g., Argument, Evidence, Structure, Grammar, Originality, Relevance); each dimension scored 0–10; AI provides specific, sentence-level feedback |
+| **AI Audio Scorer** | Transcribes spoken response; evaluates content against rubric; pronunciation scored separately using phoneme comparison (same engine as Language Pronunciation AI) |
+| **Tutor Override** | Tutor can review any AI-graded response and override the score; override recorded in audit log; AI notes the disagreement for future calibration |
+| **Rubric Builder** | Visual rubric editor: define criteria, performance levels (Excellent/Good/Satisfactory/Needs Improvement), and point values per level; attach rubric to any Essay or Audio question |
+| **Partial Credit Engine** | For code: proportion of test cases passed = proportion of points earned. For matching/ordering: partial credit per correct element |
+| **Regrading** | If a question is found to have an error after distribution, tutor can mark it void (all students receive full points) or update the correct answer and trigger automatic regrading |
+
+---
+
+#### 5.6.7 — Results, Analytics & Reporting
+
+| Report | Audience | Key Data |
+|---|---|---|
+| **Learner Score Report** | Learner + Parent | Total score, per-question result, time spent, comparison to class average, detailed AI feedback per wrong answer, correct answer explanation |
+| **Class Performance Dashboard** | Tutor | Score distribution histogram, mean/median/standard deviation, per-question difficulty (% correct), fastest and slowest completers, at-risk students (scored below threshold) |
+| **Question Item Analysis** | Tutor | Discrimination index (does this question separate high from low performers?), distractor analysis (which wrong answer was most popular and why), average time per question |
+| **Mastery Detection Report** | Tutor + AI | Which learning objectives does the class clearly understand? Which are gaps requiring reteaching? Mapped to BeQuizzy's knowledge graph |
+| **Attempt Timeline** | Tutor (for academic integrity) | Time-stamped log of every answer change, tab-switch event, copy-paste event, and submission — full audit trail |
+| **Cohort Comparison** | Academy admin | Compare class A vs class B on the same test; compare current cohort to historical average |
+| **Exportable Data** | Tutor / Academy | CSV export of all scores and metadata; PDF gradebook; API endpoint for external SIS integration |
+
+---
+
+#### 5.6.8 — Certification System
+
+> **Tests that matter should produce credentials that mean something.**
+
+| Feature | Detail |
+|---|---|
+| **Pass Threshold Setting** | Tutor defines the minimum score to "pass" a test (e.g., 80%); learners below threshold are prompted to review and retry |
+| **Auto-Certificate Generation** | On passing a designated certification test: platform auto-generates a signed, verifiable PDF certificate with learner name, subject, score, date, and BeQuizzy seal |
+| **Unique Verification ID** | Each certificate has a URL-accessible verification page; anyone can verify authenticity by entering the certificate ID |
+| **LinkedIn Share Button** | One-click to add the credential to a LinkedIn profile's Certifications section |
+| **Expiry Policy** | Tutor can set certificate validity period (e.g., IELTS prep certificate valid 2 years); expired certificates prompt renewal |
+| **Certificate Gallery** | Learner's profile page shows all earned certificates in a visual gallery; shareable public link |
+| **Tutor-Branded Certificates** | Tutors on Academy plan can add their logo and signature to auto-generated certificates |
+
+---
+
+### 5.7 — 📅 Smart Learning Hub (Mini LMS)
+
+> **BeQuizzy's Mini LMS is not an add-on. It is the operating system that makes teaching a solo business and learning a managed habit.**
+> Inspired by Google Classroom's simplicity, Canvas's curriculum structure, and Notion's flexibility — distilled to what actually moves outcomes: clarity about what to do next, visibility into whether it's working, and connection between people who are learning together.
+
+The Mini LMS serves three distinct roles simultaneously:
+
+| Role | What it solves | Key outcome |
+|---|---|---|
+| **Tutor — Solo Business** | A qualified gia sư today runs their business across WhatsApp, Zalo, Google Sheets, and Zoom. BeQuizzy replaces all of them with one professional workspace | Tutor operates like a 5-person studio — alone |
+| **Learner — Self-Management** | Without structure, learners default to whatever's easiest; weak spots never get addressed | Learner has a personal curriculum, daily plan, and mastery map |
+| **Learner — Peer Study Groups** | Learning in isolation is slower and lonelier; learners often study better with accountability from peers at the same level | Learners form their own study circles, quiz each other, and co-own their progress |
+
+---
+
+#### The Scheduling Problem BeQuizzy Solves
+
+```
+WITHOUT A SCHEDULE:                    WITH BEQUIZZY MINI LMS:
+  Learner opens app                      Learner opens app
+  → "What should I study?"               → "Today: 20 min Chemistry (AI)
+  → Browses randomly                          30 min IELTS Writing practice
+  → Does what's easiest                       Review: 5 flashcards due today"
+  → Forgets about weak spots             → Everything queued, no decision fatigue
+  → Learning is reactive, not strategic  → Learning is proactive and goal-driven
+
+TUTOR WITHOUT BEQUIZZY:                TUTOR WITH BEQUIZZY:
+  WhatsApp for updates                   Class announcements inside BeQuizzy
+  Google Sheets for grades               Grade book auto-populated from submissions
+  Tutor improvises each session          Sessions follow a planned curriculum arc
+  No visibility into student gaps        Dashboard flags: "3 students failed Quiz 3"
+  Separate tools for everything          One professional workspace for everything
+
+LEARNERS WITHOUT PEER GROUPS:          LEARNERS WITH PEER GROUPS:
+  Study alone, lose motivation           Form a study circle with 3–5 peers
+  No one to ask questions between        Async Q&A within the group
+  tutor sessions                         Group quiz battles, shared flashcard decks
+  Can't tell if they're falling behind   Progress visible to the group (opt-in)
+```
+
+---
+
+#### 5.7.1 — Learner: Personal Learning Calendar
+
+| Feature | Detail |
+|---|---|
+| **Weekly & Monthly Calendar View** | Visual calendar showing all scheduled events: AI tutor sessions, booked human tutor sessions, assignment due dates, test windows, spaced repetition review reminders |
+| **AI-Generated Daily Plan** | Each morning, AI assembles a recommended daily learning plan based on: current goals, available time declared by learner, upcoming deadlines, spaced repetition schedule, weak topics detected from recent tests |
+| **Subject Time Budget** | Learner sets a weekly time budget per subject (e.g., "Math: 3h/week, English: 2h/week"); progress bar fills as time is logged; AI warns if a subject is falling behind |
+| **Time Logging** | Sessions auto-log time spent (AI tutor sessions, simulation time, test attempts); manual log option for offline study |
+| **Upcoming Events Widget** | Home screen card: "Next: IELTS Mock Test — tomorrow 9:00 AM · Assignment due: History Essay — in 2 days" |
+| **Deadline Radar** | Scrollable timeline showing all upcoming deadlines sorted by urgency; overdue items flagged in red |
+| **Holiday & Exam Season Mode** | Learner can flag exam dates; AI automatically intensifies review schedule in the 2–4 weeks prior using spaced repetition acceleration |
+
+---
+
+#### 5.7.2 — Learner: Goal Setting & Progress Tracking
+
+| Feature | Detail |
+|---|---|
+| **Goal Wizard** | Setup flow: choose goal type (exam prep, subject mastery, skill building, exploration); set target date; AI back-calculates weekly milestones |
+| **Goal Progress Card** | Per-goal progress bar: "IELTS 7.0 by September: 64% ready — 14 weeks remaining"; broken down by skill (Reading 72%, Listening 68%, Writing 51%, Speaking 55%) |
+| **Milestone Celebrations** | When a learner hits a milestone (e.g., "finished Unit 3", "first week streak complete"), an in-app celebration triggers with XP reward |
+| **Weekly Learning Report (Self)** | Every Monday: "Last week you studied 4h 20min across 3 subjects. Top subject: Math. Weakest area: Quadratic Equations. Suggested focus this week: 2 more sessions on Quadratics." |
+| **Streak Calendar** | Duolingo-style streak heatmap showing days studied; streak broken means XP multiplier reset but progress never lost |
+| **Mastery Map** | Visual heatmap of all topics across all enrolled subjects; green = mastered, yellow = reviewed, red = not started or failed; click any cell to jump directly to that topic |
+
+---
+
+#### 5.7.3 — Learner: Assignment & Test Management
+
+| Feature | Detail |
+|---|---|
+| **My Tasks** | Unified inbox of all pending work across all subjects and tutors: assignments, tests, practice sets, reading materials |
+| **Submission Flow** | Open assignment → complete inline (essay, MCQ, code, audio) or upload file → submit with one tap; late submission marked automatically |
+| **Draft Autosave** | All in-progress assignment work is autosaved every 30 seconds; learner can return to draft from any device |
+| **Feedback Viewer** | After grading: see score, per-question AI feedback, tutor comments with annotation, and comparison to rubric; request clarification with one click |
+| **Re-attempt Tracker** | For assignments with multiple attempts: see score history across all attempts; AI highlights what improved and what still needs work |
+| **Peer Review (opt-in)** | For essay assignments: anonymized peer review mode — learner grades 2 peers' essays using the same rubric before seeing their own score (builds metacognition) |
+
+---
+
+#### 5.7.4 — Tutor: Curriculum Planner
+
+> **Think of it as a lesson plan that lives and breathes — connected to content, assignments, and student data in real time.**
+
+| Feature | Detail |
+|---|---|
+| **Course / Class Creator** | Create a named course (e.g., "IELTS Intensive — Cohort June 2026"); add description, subject tags, target level, duration; enroll students or set open enrollment |
+| **Curriculum Timeline** | Visual week-by-week lesson plan: drag-and-drop weeks, add topics per week, attach content (simulation module, video, external link, document), link assignments and tests |
+| **Unit & Topic Hierarchy** | Organize into Units → Lessons → Topics; each topic can have a completion status (Not Started / In Progress / Completed) updated by student activity |
+| **Content Library** | Tutor's personal library of reusable content: links to BeQuizzy simulations, uploaded PDFs, custom video links, question bank tests; tag and search |
+| **Pacing Recommendations** | AI analyzes class average progress and warns if the class is ahead or behind the planned curriculum pace; suggests adjustments |
+| **Class Duplication** | Clone a full curriculum (units, topics, assignments, tests) to start a new cohort — no rebuilding from scratch |
+| **Lesson Plan Template Gallery** | Pre-built curriculum templates for common courses (IELTS 3-month intensive, Grade 10 Math semester, Python beginner 8-week); customize and launch |
+
+---
+
+#### 5.7.5 — Tutor: Session Management & Calendar
+
+| Feature | Detail |
+|---|---|
+| **Tutor Master Calendar** | Full-month view of all sessions, classes, office hours, and blocked times across all students and groups |
+| **Availability Manager** | Set recurring weekly availability blocks (e.g., Mon/Wed/Fri 18:00–21:00 Vietnam time); automatically opens booking slots for students |
+| **Session Types** | 1:1 (private), Group (2–20 students), Office Hours (drop-in, first-come-first-served), Workshop (open enrollment event) |
+| **Buffer Time** | Set automatic buffer between sessions (5/10/15/30 min) to prevent back-to-back bookings |
+| **Pre-Session Agenda** | Before each session: auto-populated with: student's recent performance, topics due for coverage, previous session notes, and unresolved questions from the student |
+| **Post-Session Notes** | After each session: tutor writes session summary (what was covered, what to follow up); auto-sent to student and parent; archived in student's Learning Record |
+| **No-Show & Cancellation Policy** | Tutor sets policy (e.g., "cancel 24h in advance or lose the booking fee"); BeQuizzy enforces automatically; credit refund or deduction applied |
+| **Recurring Sessions** | Book a recurring 1:1 (e.g., every Tuesday 7:00 PM for 8 weeks); one-click cancel or reschedule individual sessions |
+| **iCal Sync** | Export tutor calendar to Google Calendar, Apple Calendar, or Outlook; two-way sync for availability updates |
+
+---
+
+#### 5.7.6 — Tutor: Assignment Creator & Grade Book
+
+| Feature | Detail |
+|---|---|
+| **Assignment Builder** | Create assignments using the Assessment Engine (any question type); add instructions, attach resources, set due date, configure late submission policy |
+| **Distribution** | Assign to: all students in a class · specific students (differentiated assignment) · a group |
+| **Auto-Grading + Queue** | Objective questions graded instantly; essay and audio questions appear in a grading queue; sort by submission time or student name |
+| **Inline Annotation** | On essay submissions: highlight text and add a comment; works like Google Docs review mode |
+| **Bulk Feedback** | Write a single comment that applies to all students (common mistake observed); send alongside individual feedback |
+| **Grade Book** | Spreadsheet-style view: rows = students, columns = assignments/tests; cells show score as percentage and raw points; overall average auto-calculated; filter by date, assignment type, or score range |
+| **Grade Categories & Weights** | Define grade categories (Homework 20%, Quizzes 30%, Tests 50%); assignments tagged to category; weighted average auto-calculated |
+| **Grade Export** | Export grade book as CSV or formatted Excel; or push to an external Student Information System via API |
+| **Progress Alert** | Auto-flag students who: scored below X on 2+ consecutive tests · haven't submitted 2+ assignments · have not logged in for N days → tutor sees alert in dashboard |
+
+---
+
+#### 5.7.7 — Tutor: Student Progress Dashboard
+
+| Panel | What the Tutor Sees |
+|---|---|
+| **Class Overview** | All enrolled students; each row shows: attendance rate, average test score, assignment submission rate, last active date, current goal progress |
+| **Student Deep-Dive** | Click any student → full profile: mastery map (topic by topic), assignment history, test score timeline, session history with notes, AI tutor usage, reflex rank |
+| **At-Risk Students** | Automatically surfaced: students whose score trend is declining, attendance is dropping, or assignment submission rate is below 60% — with suggested intervention actions |
+| **Engagement Heatmap** | Calendar heatmap showing when each student was active; identify who studies consistently vs. cramming before tests |
+| **Test Analytics** | Per-test: class distribution, question item analysis, common mistakes; AI identifies "teaching gap" — questions the whole class failed, suggesting the concept needs reteaching |
+| **Comparison View** | Compare two students side-by-side; or compare current cohort performance to the tutor's historical cohort average |
+
+---
+
+#### 5.7.8 — Tutor: Communication & Announcements
+
+| Feature | Detail |
+|---|---|
+| **Class Announcements** | Post a text/image/video announcement to all students in a class; appears in student's notifications and on the class home page |
+| **Direct Messaging** | 1:1 chat between tutor and student; 1:1 chat between tutor and parent; all messages archived and visible to the Academy admin |
+| **Parent Notification Bridge** | Tutor can send a structured weekly summary to all parents of students in a class: attendance, latest test scores, upcoming assignments; auto-formatted as an email or in-app notification |
+| **Announcement Scheduling** | Draft an announcement and schedule it to send at a future time (e.g., "Send exam reminder next Friday at 7 AM") |
+| **Q&A Discussion Board** | Per-class discussion board where students post questions; other students can reply; tutor can mark a reply as "best answer"; AI can auto-answer common questions using the Knowledge Set if available |
+| **Reaction & Poll** | Post a quick poll (e.g., "Ready for the test? Yes / Almost / Need more practice"); see real-time results; use to calibrate upcoming session |
+
+---
+
+#### 5.7.9 — Learner: Peer Study Groups
+
+> **The best accountability partner is someone learning the same thing at the same time. Peer study groups turn solo learning into a shared mission.**
+
+| Feature | Detail |
+|---|---|
+| **Group Creation** | Any learner can create a study group: name it, set the subject and target (e.g., "IELTS 7.0 by September — Study Circle"), and invite peers via private link or in-app username |
+| **Group Size** | 2–10 members; intentionally small for accountability, not a classroom |
+| **Shared Progress Wall** | Opt-in: each member's mastery progress in the shared subject is visible to the group; see who's ahead and who needs help |
+| **Async Q&A Board** | Post a question to the group; any member can answer; AI can also respond if no human answers within 24h; tutor (if enrolled) can be looped in |
+| **Group Quiz Battles** | Challenge another member or the whole group to a live quiz on any topic; results shown immediately; leaderboard resets weekly |
+| **Shared Flashcard Deck** | Members contribute cards to a group deck; spaced repetition runs individually but from the shared pool |
+| **Study Session Rooms** | Members can open a shared focus room (video off, ambient sound, countdown timer); keeps each other accountable for a timed study block |
+| **Group Streak** | Group earns a collective daily streak when all members log a session; breaking the group streak is a stronger motivator than breaking an individual streak |
+| **Group Challenges** | AI generates weekly group challenges (e.g., "Complete 3 Chemistry simulations this week"); group earns XP together |
+| **Invite a Tutor** | Group can invite any BeQuizzy tutor to their group for a one-off Q&A session or to observe their progress and give feedback |
+
+---
+
+#### 5.7.10 — Shared: Notifications & Integrations
+
+| Feature | Detail |
+|---|---|
+| **Notification Engine** | Push (mobile), email, and in-app notifications; user controls which channels per event type |
+| **Smart Reminders** | AI learns learner's study patterns; sends reminders at the optimal time (e.g., "You usually study at 8 PM — your Chemistry review is due tomorrow") |
+| **Event Types** | Session starting in 30 min · Assignment due in 24h · Test window opens · Grade posted · New announcement · New message · Streak about to break · Goal milestone reached |
+| **Do Not Disturb** | Schedule quiet hours per day; emergency-only mode for test start notifications |
+| **Calendar Integration** | Export personal schedule to Google Calendar, Apple Calendar, Outlook via iCal; events auto-update when tutor reschedules |
+| **Attendance Tracking** | For group classes: tutor marks attendance in-app; absent students receive automatic make-up resources (recording link + summary); attendance record visible to parents |
+| **Session Recording Archive** | Group class sessions auto-recorded (with student consent); AI generates a 5-bullet summary of what was covered; recording + summary stored in class library for 90 days |
+| **Waiting List** | For popular group classes: if seats are full, students join a waiting list; auto-notified if a seat opens |
+
+---
+
+### 5.8 — Out of Scope
 
 | Not Built | Reason |
 |---|---|
 | **Physical merchandise / textbooks** | BeQuizzy is a digital platform; physical goods are out of scope |
-| **Full LMS for universities** | Enterprise LMS (Moodle/Canvas replacement) is a different product with a different sales cycle |
+| **Full Enterprise LMS for universities** | Moodle/Canvas replacement with SCORM/xAPI, LTI, SIS integration, and accreditation reporting is a different product with a different sales cycle; BeQuizzy builds a purposeful Mini LMS, not an enterprise replacement |
 | **Degree-granting programs** | Accreditation is a regulatory challenge outside the product scope |
-| **Cold outreach / marketing automation for tutors** | Tutors get students through the BeQuizzy marketplace; we do not build sales CRM tools |
+| **Cold outreach / marketing automation for tutors** | BeQuizzy is a teaching tool, not a sales CRM; tutors connect with students through their existing network and BeQuizzy's in-app search, not through mass outreach |
 | **Social media platform** | BeQuizzy is a learning platform, not a social network; community features are scoped to learning contexts only |
 | **Cryptocurrency / NFT credentials** | Blockchain credentials are premature for the target market |
 | **AI-generated textbook publishing** | Out of scope for MVP; potential Phase 4 |
@@ -821,7 +1567,7 @@ Non-negotiable infrastructure features that underpin BeQuizzy as a multi-tenant,
 | Feature | Notes |
 |---|---|
 | Rate limiting | Per IP, per user, per endpoint |
-| Content moderation | AI moderation on all user-generated content (tutor profiles, session notes, AI avatar training data) |
+| Content moderation | AI moderation on all user-generated content (tutor profiles, session notes, Knowledge Set training data) |
 | **COPPA compliance** | No behavioral advertising to under-13; parental consent; data minimization |
 | **Safe chat** | Real-time message scanning between tutors and students; escalation for flagged content |
 | Session recording consent | Explicit consent required before recording any live session |
@@ -870,14 +1616,14 @@ LEARN WITH AI TUTOR
   → Interactive tools embedded in session (simulations, whiteboards, quizzes)
   → Spaced repetition schedules follow-up sessions automatically
 
-BOOK A HUMAN TUTOR
-  Browse marketplace → filter by subject, price, availability
-  → Book 1:1 or join a group class
-  → Session in Virtual Classroom (video + whiteboard + tools)
+CONNECT WITH A TUTOR
+  Find a tutor via in-app search (subject, location) or accept an invitation link from a tutor
+  → Book 1:1 or join a group class directly from the tutor’s availability calendar
+  → Session in Virtual Classroom (video + whiteboard + simulation tools)
   → AI summarizes session and assigns follow-up practice
 
 ACCESS AI KNOWLEDGE SETS (Phase 2)
-  Browse AI Knowledge Marketplace
+  Browse **BeQuizzy Marketplace**
   → Preview a tutor's AI Knowledge Set (3 free interactions)
   → Purchase license → learn from tutor's structured AI curriculum any time
 
@@ -892,11 +1638,11 @@ TRACK PROGRESS
 ```
 SIGN UP (< 10 minutes)
   Profile: subjects, experience, qualifications, video intro
-  → Identity verification (background check for marketplace)
+  → Identity verification (background check for new tutors)
   → Set hourly rate, availability, age groups served
 
-RECEIVE STUDENTS
-  Students discover and book through marketplace
+CONNECT WITH STUDENTS
+  Invite students via private link or QR code; students can also find tutors via subject search
   → Session in BeQuizzy Virtual Classroom
   → Assign homework; AI auto-grades MCQ, flags for manual review
 
@@ -913,7 +1659,7 @@ BUILD AI KNOWLEDGE SET (Phase 2 — Academy plan)
   → Layer 4: Define teaching logic trees ("if student struggles with X → try Y")
   → Layer 5: Log common mistakes library (from real teaching experience)
   → Layer 6: Set assessment framework (mastery thresholds + capstone challenge)
-  → Preview as a student → Publish to AI Knowledge Marketplace → set license price
+  → Preview as a student → Publish to **BeQuizzy Marketplace** → set license price
   → Earn 70% of every license sale passively
 ```
 
@@ -980,10 +1726,10 @@ BeQuizzy launches in Vietnam and expands in deliberate phases. Each market has d
 
 | Competitor | Their Strength | BeQuizzy's Answer |
 |---|---|---|
-| Duolingo | 40+ languages, 500M downloads, brand recognition | Simulation engine + human tutors + AI avatar — Duolingo is a vocabulary drill; BeQuizzy is a learning world |
+| Duolingo | 40+ languages, 500M downloads, brand recognition | Simulation engine + human tutors + AI Knowledge Studio — Duolingo is a vocabulary drill; BeQuizzy is a learning world |
 | Synthesis Tutor | SpaceX origin story, excellent UX, math only | BeQuizzy covers 20x more subjects; same depth of simulation |
 | Khan Academy / Khanmigo | Free, trusted, broad curriculum | BeQuizzy is interactive simulation — watching a video ≠ running an experiment |
-| Preply / italki | 100k+ tutors, language-focused | BeQuizzy wraps human tutors inside a full platform with AI, tools, and avatar economy |
+| Preply / italki | 100k+ tutors, language-focused | BeQuizzy wraps human tutors inside a full platform with AI, tools, and a structured Knowledge Set economy |
 | Coursera / Udemy | Massive course libraries | Static video courses vs. BeQuizzy's living simulations and AI tutor |
 
 **Global product requirements:**
@@ -994,7 +1740,7 @@ BeQuizzy launches in Vietnam and expands in deliberate phases. Each market has d
 - GDPR (EU), COPPA (USA), PDPA (Thailand/Singapore), compliance-by-design
 - Global tutor onboarding in any timezone
 
-**Phase 3 North Star:** 10M Weekly Active Learners globally; AI Avatar Marketplace with 10,000+ listed avatars.
+**Phase 3 North Star:** 10M Weekly Active Learners globally; AI Knowledge Marketplace with 10,000+ listed Knowledge Sets.
 
 ---
 
@@ -1031,7 +1777,7 @@ BEFORE LAUNCH IN A NEW MARKET:
 |---|---|---|---|
 | **Tutor Starter** | $0 | 0₫ | List profile · Up to 5 active students · Basic scheduling · BeQuizzy takes 20% commission per session |
 | **Tutor Pro** | $29/mo | 699,000₫/mo | Unlimited students · Group class management · Session recording · Homework tools · BeQuizzy takes 10% commission |
-| **Academy** | $79/mo | 1,990,000₫/mo | All Tutor Pro features · AI Avatar Creator Studio · Avatar marketplace listing · Center management (up to 5 teachers) · 8% commission |
+| **Academy** | $79/mo | 1,990,000₫/mo | All Tutor Pro features · **AI Knowledge Studio** (build & publish Knowledge Sets) · Knowledge Set marketplace listing · Center management (up to 5 teachers) · 8% commission |
 | **Center Enterprise** | Custom | Custom | Unlimited teachers · White-label portal · Priority support · API access · Custom commission rate |
 
 ### AI Knowledge Set Licenses (Student-Facing)
