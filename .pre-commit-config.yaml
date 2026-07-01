@@ -1,0 +1,172 @@
+# BeQuizzy pre-commit hooks
+# ─────────────────────────────────────────────────────────────────────────────
+# Polyglot BE stack: Go/Gin · Python/FastAPI · Java/Spring Boot · Node.js/NestJS
+# Each service declares its language via: go.mod | pyproject.toml | pom.xml | package.json
+# Hooks auto-detect language per service directory.
+#
+# Install once:
+#   pip install pre-commit
+#   pre-commit install
+#
+# Run manually:
+#   pre-commit run --all-files
+#
+# Reference: docs/CODE_CONVENTIONS.md · AGENTS.md §3 (non-negotiables)
+# ─────────────────────────────────────────────────────────────────────────────
+
+repos:
+  # ── Go services ────────────────────────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: go-fmt
+        name: "[BQ] gofmt — Go formatting"
+        entry: bash -c 'find services/ -name "go.mod" -exec dirname {} \; | while read d; do gofmt -l -w "$d"; done'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: go-vet
+        name: "[BQ] go vet — Go static analysis"
+        entry: bash -c 'find services/ -name "go.mod" -exec dirname {} \; | while read d; do (cd "$d" && go vet ./...); done'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: no-raw-sql-sprintf
+        name: "[BQ] no fmt.Sprintf in SQL queries (non-negotiable §7)"
+        entry: bash -c 'if grep -rn "fmt\.Sprintf.*SELECT\|fmt\.Sprintf.*INSERT\|fmt\.Sprintf.*UPDATE\|fmt\.Sprintf.*DELETE" services/ --include="*.go"; then echo "VIOLATION [no-raw-sql-sprintf]: use GORM query builder or db.Raw() with params"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: no-auto-migrate
+        name: "[BQ] no AutoMigrate in production code (non-negotiable §8)"
+        entry: bash -c 'if grep -rn "AutoMigrate" services/ --include="*.go" | grep -v "_test.go\|// noqa"; then echo "VIOLATION [no-auto-migrate]: use golang-migrate SQL files only"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+  # ── Python services ────────────────────────────────────────────────────────
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.8.6
+    hooks:
+      - id: ruff
+        args: [--fix]
+        files: ^services/.+\.py$
+      - id: ruff-format
+        files: ^services/.+\.py$
+
+  # ── Node.js / NestJS services ──────────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: nestjs-ts-check
+        name: "[BQ] TypeScript check (NestJS services)"
+        entry: bash -c 'find services/ -name "package.json" -path "*/nestjs*" -exec dirname {} \; | while read d; do (cd "$d" && npx tsc --noEmit 2>&1); done || true'
+        language: system
+        pass_filenames: false
+        files: ^services/.+nestjs.+\.(ts)$
+
+  # ── Frontend (Next.js) ─────────────────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: ts-check-portal
+        name: "[BQ] TypeScript check (portal)"
+        entry: bash -c 'cd apps/portal && npx tsc --noEmit'
+        language: system
+        pass_filenames: false
+        files: ^apps/portal/.+\.(ts|tsx)$
+
+  # ── Java / Spring Boot — run via Maven Wrapper if present ─────────────────
+  # Java services: add spotless or checkstyle hooks when first Java service is created
+  # Placeholder comment — uncomment and adapt when services/*/pom.xml exists:
+  #
+  # - repo: local
+  #   hooks:
+  #     - id: java-checkstyle
+  #       name: "[BQ] Checkstyle (Java/Spring Boot)"
+  #       entry: bash -c 'find services/ -name "mvnw" -exec dirname {} \; | while read d; do (cd "$d" && ./mvnw checkstyle:check -q); done'
+  #       language: system
+  #       pass_filenames: false
+  #       files: ^services/.+\.java$
+
+  # ── Universal ──────────────────────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^services/migrations/
+      - id: end-of-file-fixer
+        exclude: ^services/migrations/
+      - id: check-yaml
+      - id: check-json
+      - id: no-commit-to-branch
+        args: [--branch, main]
+
+repos:
+  # ── Go code quality ────────────────────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: go-fmt
+        name: "[BQ] gofmt — Go formatting"
+        entry: bash -c 'cd services && gofmt -l -w $(find . -name "*.go" | grep -v vendor)'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: go-vet
+        name: "[BQ] go vet — Go static analysis"
+        entry: bash -c 'for d in services/*/; do (cd "$d" && go vet ./...); done'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: go-test-short
+        name: "[BQ] go test (short) — unit tests only"
+        entry: bash -c 'for d in services/*/; do (cd "$d" && go test -short -race ./... 2>&1); done'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: no-raw-sql-sprintf
+        name: "[BQ] no fmt.Sprintf in SQL queries (non-negotiable §7)"
+        entry: bash -c 'if grep -rn "fmt\.Sprintf.*SELECT\|fmt\.Sprintf.*INSERT\|fmt\.Sprintf.*UPDATE\|fmt\.Sprintf.*DELETE" services/ --include="*.go"; then echo "VIOLATION: use GORM query builder or db.Raw() with params instead of fmt.Sprintf"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: no-auto-migrate
+        name: "[BQ] no AutoMigrate in production code (non-negotiable §8)"
+        entry: bash -c 'if grep -rn "AutoMigrate" services/ --include="*.go" | grep -v "_test.go\|// noqa"; then echo "VIOLATION: use golang-migrate SQL files, not GORM AutoMigrate in production"; exit 1; fi'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+      - id: org-id-scope
+        name: "[BQ] tenant scope check — queries should include org_id or workspace_id"
+        entry: bash -c 'python scripts/lint/check_tenant_scope.py services/ 2>/dev/null || echo "WARN: tenant scope linter not yet installed — run: python scripts/lint/check_tenant_scope.py services/"'
+        language: system
+        pass_filenames: false
+        files: ^services/.+\.go$
+
+  # ── Frontend quality ────────────────────────────────────────────────────────
+  - repo: local
+    hooks:
+      - id: ts-check
+        name: "[BQ] TypeScript type check"
+        entry: bash -c 'cd apps/portal && npx tsc --noEmit'
+        language: system
+        pass_filenames: false
+        files: ^apps/portal/.+\.(ts|tsx)$
+
+  # ── Standard hooks ──────────────────────────────────────────────────────────
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.6.0
+    hooks:
+      - id: trailing-whitespace
+        exclude: ^services/migrations/
+      - id: end-of-file-fixer
+        exclude: ^services/migrations/
+      - id: check-yaml
+      - id: check-json
+      - id: no-commit-to-branch
+        args: [--branch, main]

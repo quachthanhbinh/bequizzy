@@ -5,11 +5,49 @@ description: "Use when you have an approved spec and need to create a detailed i
 
 # Writing Implementation Plans
 
+## Which Plan Type to Use?
+
+> **Choose BEFORE writing anything.** Wrong plan type = wasted context.
+
+| Change size | Plan type | Spec required? | IMPLEMENT-NOTE? |
+|---|---|---|---|
+| Single-file bug fix, obvious cause | **MICRO** | No | No |
+| Multi-file feature, one service | **STANDARD** | Yes — spec folder | Yes |
+| Cross-service, DB schema, AI path | **FULL SDD** | Yes — full 8-file spec | Yes |
+
+---
+
+## MICRO Plan (small changes — no spec folder needed)
+
+Use for: single-file bug fixes, copy changes, config tweaks, adding one field.
+**NOT for:** new endpoints, new models, cross-service changes, AI/billing paths.
+
+```markdown
+## Micro Plan: <title>
+
+**File:** `services/<service>/<path>`
+**Language:** Go / Python / Java / Node.js
+**Change:** <one sentence>
+
+- [ ] Step 1: Write failing test
+- [ ] Step 2: Run → confirm RED
+- [ ] Step 3: Minimal fix (≤ 30 lines)
+- [ ] Step 4: Run → confirm GREEN
+- [ ] Step 5: Run linters for this language
+- [ ] Step 6: Commit: `git commit -m "fix(<scope>): <desc>"`
+```
+
+**No IMPLEMENT-NOTE, no SPRINT-CONTRACT, no spec folder for Micro plans.**
+
+---
+
+## STANDARD / FULL SDD Plan
+
 ## Overview
 
 Write comprehensive plans assuming the implementer has zero codebase context. Document everything: which files to touch, complete code, how to test, exact commands. DRY. YAGNI. TDD. Frequent commits.
 
-**Save plans to:** `docs/plans/YYYY-MM-DD-<feature-name>.md`
+**Save plans to:** `docs/specs/{NN}_{FEATURE}/TASKS.md`
 
 ## Scope Check
 
@@ -19,11 +57,12 @@ If the spec covers multiple independent subsystems, break into separate plans �
 
 Before writing any plan:
 1. **Read the approved spec** in `docs/specs/`
-2. **Find an existing similar handler/service** in the target service — use it as the structural template
-3. **Read related models** — actual SQLAlchemy struct definitions
-4. **Read `DATABASE_SCHEMA.md`** — verify table/column names exactly
-5. **Read at least one existing test** — match the test pattern exactly
-6. **Read service ownership map** — confirm which service owns each new table
+2. **Confirm the service language** — check for `go.mod` / `pyproject.toml` / `pom.xml` / `package.json` to know which test patterns to use
+3. **Find an existing similar handler/service** — use it as the structural template
+4. **Read related models** — actual struct/class definitions (Go structs, Python SQLAlchemy, Java JPA, NestJS entities)
+5. **Read `DATABASE_SCHEMA.md`** — verify table/column names exactly
+6. **Read at least one existing test** — match the test pattern exactly
+7. **Read service ownership map** — confirm which service owns each new table
 
 This prevents the plan from inventing field names or patterns.
 

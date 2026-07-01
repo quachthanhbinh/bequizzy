@@ -1,0 +1,145 @@
+name: Doc Garden — Weekly Entropy Check
+
+# Runs every Monday to detect documentation drift, stale specs, and
+# AC→Test coverage gaps that accumulate outside the PR cycle.
+#
+# Three jobs:
+#   1. go-lint     — run golangci-lint + custom non-negotiable checks
+#   2. doc-garden  — AI agent scans docs/ for drift and opens GitHub issues
+#   3. spec-coverage — verify every spec AC has a corresponding test row
+#
+# Reference: AGENTS.md §3 (non-negotiables)
+
+on:
+  schedule:
+    - cron: "0 3 * * 1"   # Mondays 03:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: write
+  issues: write
+
+jobs:
+  # ── 1. Go lint (computational sensors) ────────────────────────────────────
+  go-lint:
+    name: Go lint (scheduled)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-go@v5
+        with:
+          go-version: "1.23"
+
+      - name: golangci-lint
+        uses: golangci/golangci-lint-action@v6
+        with:
+          version: latest
+          working-directory: services/
+
+      - name: Check non-negotiables
+        run: |
+          echo "=== Checking no fmt.Sprintf in SQL queries ===" 
+          if grep -rn "fmt\.Sprintf.*SELECT\|fmt\.Sprintf.*INSERT\|fmt\.Sprintf.*UPDATE\|fmt\.Sprintf.*DELETE" services/ --include="*.go"; then
+            echo "VIOLATION [no-raw-sql-sprintf]: use GORM query builder or db.Raw() with params"
+            exit 1
+          fi
+
+          echo "=== Checking no AutoMigrate in production code ==="
+          if grep -rn "AutoMigrate" services/ --include="*.go" | grep -v "_test.go\|// noqa"; then
+            echo "VIOLATION [no-auto-migrate]: use golang-migrate SQL files only"
+            exit 1
+          fi
+
+          echo "OK — non-negotiable checks passed"
+
+  # ── 2. Doc-gardener agent (inferential sensor) ────────────────────────────
+  doc-garden:
+    name: Doc-garden agent scan
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Run doc-gardener agent
+        uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are the doc-gardener for BeQuizzy — an AI-native assessment platform.
+
+            This is an automated weekly entropy check. Your job:
+
+            1. Scan docs/ for drift against the codebase (Go services, Next.js app):
+               - Stale specs in docs/specs/ (marked In Progress, no git activity 30+ days)
+               - Architecture docs referencing non-existent services or paths
+               - CODE_CONVENTIONS.md patterns that contradict actual code in services/
+               - DATABASE_SCHEMA.md tables not matching SQL migrations in services/migrations/
+
+            2. Check docs/specs/ for specs where PRD.md has acceptance criteria
+               but TESTS.md has no AC→Test matrix rows.
+
+            3. Produce a numbered findings list. For each:
+               - Severity: LOW / MEDIUM / HIGH
+               - File affected
+               - What is stale/wrong
+               - Suggested fix (2-3 sentences)
+
+            4. If findings exist, open a GitHub issue titled:
+               "Doc Garden: weekly entropy report $(date +%Y-%m-%d)"
+               with findings as body. Label: documentation, maintenance.
+               If no findings: print "GARDEN CLEAN — no drift found."
+
+            5. Do NOT silently fix anything. Only report and open the issue.
+          claude_args: |
+            --allowedTools Read,Glob,Grep,Bash,Write
+            --max-turns 25
+
+  # ── 3. Spec AC→Test coverage (computational sensor) ──────────────────────
+  spec-coverage:
+    name: Spec AC→Test matrix coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check TESTS.md AC matrix completeness
+        shell: python
+        run: |
+          import re, sys
+          from pathlib import Path
+
+          specs_root = Path("docs/specs")
+          issues = []
+
+          for prd in specs_root.rglob("PRD.md"):
+              spec_dir = prd.parent
+              if spec_dir.name == "_TEMPLATE":
+                  continue
+              tests_md = spec_dir / "TESTS.md"
+              if not tests_md.exists():
+                  issues.append(f"MISSING TESTS.md: {spec_dir}")
+                  continue
+              prd_text = prd.read_text()
+              ac_ids = re.findall(r'\bAC-(\d+)\b', prd_text)
+              if not ac_ids:
+                  continue
+              tests_text = tests_md.read_text()
+              matrix_acs = re.findall(r'\|\s*AC-(\d+)\s*\|', tests_text)
+              missing = set(ac_ids) - set(matrix_acs)
+              if missing:
+                  issues.append(
+                      f"TESTS.md missing AC rows: {spec_dir} → AC-{sorted(missing, key=int)}"
+                  )
+
+          if issues:
+              print("AC→TEST COVERAGE GAPS:")
+              for i in issues:
+                  print(f"  {i}")
+          else:
+              print("OK — all spec ACs have corresponding TESTS.md rows.")

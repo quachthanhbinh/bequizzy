@@ -1,7 +1,28 @@
 # NN — <FEATURE> — TESTS
 
 **Status:** 📝 Draft
-**Coverage targets:** 90% on new code; **100% on security-critical paths** (auth, workspace scope, credit deduction, PII handling)
+**Coverage targets:** 90% on new code; **100% on security-critical paths** (auth, tenant scope, AI cost gate, PII handling)
+
+---
+
+## AC → Test Coverage Matrix
+
+> **Required.** Every acceptance criterion in `PRD.md` must have a row here.
+> The `doc-garden.yml` CI job checks this matrix weekly.
+> An AC with no test row = a spec that cannot be verified = a BLOCKER for ship.
+
+| AC ID | Description (from PRD.md) | Unit Test | Integration Test | E2E Test |
+|-------|--------------------------|-----------|-----------------|---------|
+| AC-1  | _copy AC text from PRD.md_ | `services/<svc>/tests/test_X_test.go::TestY` | ✅ / ❌ | `e2e/X.spec.ts:LN` |
+| AC-2  | _copy AC text from PRD.md_ | `services/<svc>/tests/test_Z_test.go::TestZ` | ❌ | N/A |
+
+**Rules:**
+- Every row in `PRD.md`'s acceptance criteria section gets one row here.
+- Test file + function name must be filled before spec approval.
+- N/A only for AC with no user-facing surface (e.g. background jobs with no UI).
+- ❌ means "not yet written" — must be ✅ before merging to main.
+
+---
 
 ## Test Pyramid
 
