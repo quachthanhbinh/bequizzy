@@ -1598,6 +1598,65 @@ Non-negotiable infrastructure features that underpin BeQuizzy as a multi-tenant,
 | **Connected apps** | View + disconnect active OAuth connections |
 | Learning preferences | Preferred language of instruction, subjects of interest, learning pace |
 
+### Referral Program
+
+| Feature | Notes |
+|---|---|
+| Referral link | Unique per-user link (learner and tutor) with 30-day cookie tracking |
+| Reward structure | Free Learner Pro days per referral event (signup, first paid session, plan upgrade) |
+| Tutor referral bonus | Tutor earns bonus payout % on first 3 months of each referred student's subscription |
+| Fraud prevention | Same IP / device fingerprint detection |
+| Referral dashboard | Clicks, signups, upgrades, rewards earned |
+
+---
+
+### Customer Lifecycle & Growth
+
+*How BeQuizzy retains subscribers and expands revenue — internal SaaS operations, not customer-facing product features.*
+
+**Retain — Learners**
+
+| Feature | Notes |
+|---|---|
+| **Milestone Celebration System** | In-app celebration at key learning moments: first AI session completed, first simulation mastered, first streak week, first exam mock passed, first Knowledge Set licensed. Each milestone surfaces a suggested next action (e.g., \"Try Chemistry next — it pairs with your Physics progress\"). |
+| **Weekly Learning Digest** | Automated weekly email + push: sessions completed, topics mastered, streak status, spaced repetition queue for the week. Sent only when there is learning activity. Included for parents of child learners. |
+| **Streak Break Rescue** | When a streak is about to break (no activity in 20+ hours): push notification + one free \"streak freeze\" per month. Streak loss is the #1 churn trigger for habit-based learning apps. |
+| **Smart Re-engagement Reminders** | AI learns each learner's active hours from session patterns; schedules reminders at the optimal time (e.g., \"You usually study at 8 PM — your spaced repetition review is due tonight\"). |
+| **At-Risk Learner Detection** | Internal scoring: login frequency + session completion rate + spaced repetition queue backlog. At-risk learners get a personalized in-app check-in card (\"It's been 10 days — your Chemistry streak is at risk\") and an automated email. |
+| **Cancellation Intervention Flow** | 4-step flow on cancel: (1) show learning progress summary (topics mastered, streak, improvement delta) → (2) offer Pause (keep data and rank, freeze billing) → (3) offer downgrade to Free → (4) one-time 30% discount for 3 months. Each step shown only if previous is declined. |
+| **Win-Back Sequences** | Automated email lifecycle for churned learners: Day 7 (progress preservation reminder), Day 30 (what's new + streak can restart), Day 60 (limited re-activation offer). |
+| **BeQuizzy NPS** | In-app survey at: first month completed, Day 90, post-exam. Promoters → referral ask. Detractors → routed to support immediately with context-aware message. |
+| **Feature Discovery Nudges** | If a paying learner has not used a feature within 14 days of unlock (e.g., Exam Prep, Reflex Arena), surface a contextual in-app nudge with a 60-second quick-start guide. |
+
+**Retain — Tutors**
+
+| Feature | Notes |
+|---|---|
+| **Tutor Revenue Dashboard** | Weekly summary: sessions taught, income earned, student progress highlights. Tutors who see their income growing don't leave. |
+| **Knowledge Set Performance Digest** | Monthly email for Academy tutors: licenses sold, learner completion rate, score improvement delta, revenue earned. Makes the passive income tangible and motivating. |
+| **Student Milestone Alerts** | Tutor receives in-app notification when a student they teach achieves a milestone (first mastery, exam score improvement). Reinforces emotional investment in the platform. |
+| **Tutor Cancellation Flow** | 3-step: (1) show student roster + income earned → (2) offer Pause (student relationships preserved, no new bookings) → (3) offer downgrade to Tutor Starter (free with commission). |
+
+**Upsell / Expansion — Learners**
+
+| Feature | Notes |
+|---|---|
+| **Session Limit Smart Alert** | In-app banner + email when a Free learner hits 4/5 monthly AI sessions. Shown at peak frustration moment: contextual upgrade CTA, not a generic pop-up. |
+| **Feature-Gate Upgrade Moments** | When a Free/Learner Pro user touches a locked feature (Exam Prep, extended simulation, full Parent Dashboard): show a live preview + value prop + upgrade CTA — not a disabled button. |
+| **Annual Plan Conversion Nudge** | Triggered at month 3–4 of monthly subscription: in-app banner + email showing cumulative monthly spend vs. annual cost and exact savings (e.g., \"You've paid $36 in 3 months — switch to annual and pay $99 for the year\"). |
+| **Exam Deadline Urgency** | If a learner's profile shows an upcoming exam (IELTS, THPT, SAT), surface a contextual upgrade CTA starting 90 days before: \"Your IELTS is in 90 days — unlock the full prep track now.\" |
+| **Family Plan Upsell** | When a parent adds a second child account: auto-surface the Family Plan as the cheaper option vs. two individual Learner Pro subscriptions. |
+| **Knowledge Set Purchase Funnel** | When a learner views a Knowledge Set preview and uses all 3 free interactions: show progress made, what's locked, and a one-click license purchase. Momentum from learning drives conversion. |
+
+**Upsell / Expansion — Tutors**
+
+| Feature | Notes |
+|---|---|
+| **Student Roster Limit Alert** | Tutor Starter users hit the 5-student cap → contextual upgrade CTA: \"You have 5 students and 3 more waiting — upgrade to Tutor Pro for unlimited students.\" |
+| **AI Knowledge Studio Teaser** | Academy-locked feature visible (but locked) on Tutor Pro dashboards. On hover: preview of Knowledge Set builder + estimated monthly passive income based on the tutor's subject and student count. |
+| **Group Class Unlock Moment** | When a Tutor Starter or Tutor Pro attempts to create a group class beyond their limit: upgrade CTA with clear value prop (\"Teach 20 students in one session instead of 20 separate ones\"). |
+| **Revenue Attribution** | Academy plan tutors see their total passive income from Knowledge Set licenses on the main dashboard — the strongest retention lever for high-value tutors. |
+
 ---
 
 ## 7. How It Works
